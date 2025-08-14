@@ -7,7 +7,7 @@ const META_DESCRIPTION =
     "At Katanoff, we create timeless jewelry with exceptional craftsmanship and elegant designs. Our passion for fine jewelry inspires every collection, offering clients lasting beauty and value.";
 const META_KEYWORDS =
     "Katanoff, fine jewelry, handcrafted jewelry, timeless jewelry, unique craftsmanship, diamond jewelry, gold jewelry, custom jewelry, elegant accessories";
-const CANONICAL_URL = `${WebsiteUrl}/shop/about-us`;
+const CANONICAL_URL = `${WebsiteUrl}/about-us`;
 
 export const metadata = generateMetadata({
     title: META_TITLE,

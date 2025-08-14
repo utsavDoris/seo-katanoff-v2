@@ -9,11 +9,6 @@ import tranperencyImg from "@/assets/images/about-us/transperency.webp";
 import SustainImg from "@/assets/images/about-us/sustainability.webp";
 import Compassion from "@/assets/images/about-us/compassion.webp";
 import Inclusion from "@/assets/images/about-us/inclusion.webp";
-import {
-  AnimatedSection,
-  CustomImg,
-  HeroBanner,
-} from "@/components/dynamiComponents";
 import Link from "next/link";
 import { FLASH_DEALS, helperFunctions } from "@/_helper";
 
@@ -137,7 +132,7 @@ const missionPillars = [
 export default function AboutPage() {
   return (
     <>
-      <HeroBanner
+      {/* <HeroBanner
         staticSrcMobile={aboutUsMobile}
         staticSrcDesktop={aboutUsDesktop}
         isStaticBanner={true}
@@ -145,7 +140,7 @@ export default function AboutPage() {
         titleAttr=""
         textAlignment="left"
         customClass="text-!left !justify-left !pl-12"
-      />
+      /> */}
       <section className="mt-12 lg:mt-16 flex flex-col gap-4 text-center container text-base lg:text-lg">
         <p>
           Welcome to Katanoff a world where timeless elegance meets modern
@@ -169,7 +164,7 @@ export default function AboutPage() {
         </p>
       </section>
 
-      <div className="mt-16 lg:mt-28 container">
+      {/* <div className="mt-16 lg:mt-28 container">
         {aboutUsContent.map((content, index) => (
           <AnimatedSection
             key={index}
@@ -183,7 +178,7 @@ export default function AboutPage() {
             direction={content?.direction}
           />
         ))}
-      </div>
+      </div> */}
 
       <section className="bg-alabaster py-0.3 px-2 sm:px-8 lg:px-5 lg:mt-24 text-baseblack xxs:mt-12 md:mt-16 leading-relaxed 2xl:pt-10">
         <div className="text-center max-w-4xl px-2 mx-auto py-2">
@@ -202,11 +197,11 @@ export default function AboutPage() {
               key={index}
               className="flex flex-col items-center md:items-start text-center lg:text-start"
             >
-              <CustomImg
+              {/* <CustomImg
                 srcAttr={pillar.img}
                 altAttr={pillar.altAttr}
                 titleAttr={pillar.titleAttr}
-              />
+              /> */}
               <h3 className="text-2xl 2xl:text-3xl font-castoro py-3">
                 {pillar.title}
               </h3>
@@ -226,11 +221,11 @@ export default function AboutPage() {
               href={href}
               className="relative group block overflow-hidden"
             >
-              <CustomImg
+              {/* <CustomImg
                 src={src}
                 alt={alt}
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
+              /> */}
               <div className="absolute bottom-6 left-6 text-white text-lg tracking-wide font-bold">
                 {label}
               </div>
