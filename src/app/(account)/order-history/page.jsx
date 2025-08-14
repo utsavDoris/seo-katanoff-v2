@@ -372,5 +372,5 @@
 // }
 
 export default function OrderHistoryPage() {
-  retrun(<div>Order-history</div>);
+  return <div>Order-history</div>;
 }
