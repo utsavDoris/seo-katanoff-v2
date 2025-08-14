@@ -55,11 +55,14 @@ export default function OrderHistoryPage() {
   const { showModal } = useSelector(({ common }) => common);
 
   useEffect(() => {
+    if (typeof document === "undefined") return; // prevents SSR crash
+
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setOpenId(null);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -334,7 +337,13 @@ export default function OrderHistoryPage() {
                     </div>
                   ) : (
                     <>
-                      <div className={`w-full text-left hover:bg-gray-100 flex gap-4 text-base text-basegray   ${invoiceLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-gray-100"}`}>
+                      <div
+                        className={`w-full text-left hover:bg-gray-100 flex gap-4 text-base text-basegray   ${
+                          invoiceLoading
+                            ? "opacity-50 cursor-not-allowed"
+                            : "hover:bg-gray-100"
+                        }`}
+                      >
                         <DownloadInvoice
                           orderId={openId}
                           onSuccess={() => setOpenId(null)}
