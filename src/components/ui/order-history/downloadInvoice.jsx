@@ -1,6 +1,6 @@
 import { fetchInvoiceOrderDetail } from "@/_actions/order.action";
 import { fetchReturnInvoiceDetail } from "@/_actions/return.action";
-import { generatePDF } from "@/_helper";
+import { generatePDF } from "@/_helper/generatePdf";
 import { generateReturnPDF } from "@/_helper/generateReturnPdf";
 import { setInvoiceLoading, setSelectedOrder } from "@/store/slices/orderSlice";
 import { setReturnOrder } from "@/store/slices/returnSlice";
