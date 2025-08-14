@@ -1,3 +1,4 @@
+"use client";
 import axios from "axios";
 import { setAuthToken } from "@/interceptors/httpInterceptor";
 import Cookies from "js-cookie";
