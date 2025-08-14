@@ -175,7 +175,6 @@ const getSellingPrice = ({ price, discount = 0, isCustomized = false }) => {
 };
 
 const getCurrentUser = () => {
-  if (typeof window === "undefined") return null; 
   const currentUserJson = localStorage.getItem("currentUser");
   const currentUser = JSON.parse(currentUserJson);
   return currentUser;

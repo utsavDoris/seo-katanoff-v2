@@ -10,7 +10,7 @@ import { setTransparentHeaderBg } from "@/store/slices/commonSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const pathname = usePathname();
@@ -66,4 +66,6 @@ export default function Layout({ children }) {
       <main className="h-full">{children}</main>
     </>
   );
-}
+};
+
+export default Layout;
