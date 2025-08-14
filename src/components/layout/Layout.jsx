@@ -1,16 +1,4 @@
-"use client";
-
-import axios from "axios";
-import { setAuthToken } from "@/interceptors/httpInterceptor";
-import { apiUrl } from "@/_helper";
-import errorInterceptor from "@/interceptors/errorInterceptor";
-import { useRouter } from "next/navigation";
 const Layout = ({ children }) => {
-  const router = useRouter();
-  axios.defaults.baseURL = apiUrl;
-  setAuthToken();
-  errorInterceptor(router);
-
   return (
     <>
       <link
