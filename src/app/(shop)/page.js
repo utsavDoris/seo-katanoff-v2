@@ -1,6 +1,7 @@
-// const { HomePage } = require("@/components/dynamiComponents");
 
 const Home = () => {
-  return <div>Home</div>;
+  return <>
+    <h1>Home Page</h1>
+  </>;
 };
 export default Home;

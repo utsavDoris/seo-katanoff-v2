@@ -174,19 +174,10 @@ const getSellingPrice = ({ price, discount = 0, isCustomized = false }) => {
   }
 };
 
-export const getCurrentUser = () => {
-  if (typeof window === "undefined") {
-    // Running on server → no localStorage
-    return null;
-  }
-
-  try {
-    const currentUserJson = localStorage.getItem("currentUser");
-    return currentUserJson ? JSON.parse(currentUserJson) : null;
-  } catch (err) {
-    console.error("Failed to parse currentUser from localStorage:", err);
-    return null;
-  }
+const getCurrentUser = () => {
+  const currentUserJson = localStorage.getItem("currentUser");
+  const currentUser = JSON.parse(currentUserJson);
+  return currentUser;
 };
 
 // const getStatusCustomBadge = (status) => {

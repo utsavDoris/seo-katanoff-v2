@@ -1,12 +1,11 @@
 {
-  "name": "userpanel",
+  "name": "tele-gold",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "postbuild": "next-sitemap",
     "lint": "next lint"
   },
   "dependencies": {
