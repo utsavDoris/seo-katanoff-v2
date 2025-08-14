@@ -1,7 +1,8 @@
 import CustomJewelry from "@/components/ui/CustomJewelry";
 
 const CustomJewelryForm = () => {
-  return <CustomJewelry />;
+  return <div>CustomJewelryForm</div>;
+  // return <CustomJewelry />;
 };
 
 export default CustomJewelryForm;
