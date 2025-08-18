@@ -6,11 +6,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <main>
-          <nav>
+          {/* <nav>
             <Link href="/">Home</Link>
             <Link href="/about-us">About</Link>
             <Link href="/contact-us">Contact</Link>
-          </nav>
+          </nav> */}
           {children}
         </main>
       </body>
