@@ -17,9 +17,9 @@ export default function RootLayout({ children }) {
       </head> */}
       <body>
         <StoreProvider>
-          {/* <Layout> */}
+          <Layout>
             {children}
-          {/* </Layout> */}
+          </Layout>
         </StoreProvider>
       </body>
       {/* <GoogleAnalytics gaId={googleAnalyticsId} /> */}
