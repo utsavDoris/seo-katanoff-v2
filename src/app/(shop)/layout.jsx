@@ -1,6 +1,6 @@
 // import { Footer, Header } from "@/components/dynamiComponents";
 
-import Footer from "@/components/layout/footer";
+import { Footer } from "@/components/dynamiComponents";
 import Link from "next/link";
 
 // import Header from "@/components/layout/header";
