@@ -7,13 +7,13 @@ export default function NavigationHeader() {
 
   const staticLinks = [
     {
-      title: "Custom",
-      href: "/custom-jewelry",
+      title: "Sitemap",
+      href: "/site-map",
     },
-    {
-      title: "About Katanoff",
-      href: "/about-us",
-    },
+    // {
+    //   title: "About Katanoff",
+    //   href: "/about-us",
+    // },
   ];
   return (
     <header>
