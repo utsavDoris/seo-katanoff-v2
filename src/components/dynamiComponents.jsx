@@ -114,7 +114,7 @@ export const ShippingForm = dynamic(
   }
 );
 export const HomePage = dynamic(() => import("./ui/home/HomePage.jsx"), {
-  ssr: false,
+  ssr: true,
 });
 export const CheckoutPage = dynamic(
   () => import("./ui/checkout/CheckoutPage.jsx"),
