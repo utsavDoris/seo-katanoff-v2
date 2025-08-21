@@ -38,7 +38,7 @@ import fiveStar from "@/assets/icons/fiveStar.svg";
 import fourStar from "@/assets/icons/fourStar.svg";
 import fourAndHalfStar from "@/assets/icons/fourAndHalfStar.svg";
 import ResponsiveImageAndContent from "../ResponsiveImageAndContent";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchCollectionsByTypes } from "@/_actions/collection.action";
 import HomePageSliderSkeleton from "../HomePageSliderSkeleton";
 import TwoGridSkeleton from "../TwoGridSkeleton";
@@ -185,7 +185,13 @@ const Home = () => {
   const sliderData =
     collectionsData.find((item) => item.type === SLIDER_GRID)?.data || [];
 
-  let currentUser = helperFunctions?.getCurrentUser();
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const user = helperFunctions.getCurrentUser();
+    setCurrentUser(user);
+  }, []);
+
   return (
     <>
       {/* {currentUser ? <HomePagePopupWithLogin /> : <HomePagePopup />} */}
