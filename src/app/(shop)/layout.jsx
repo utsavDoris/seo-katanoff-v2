@@ -3,12 +3,12 @@
 import Footer from "@/components/layout/footer";
 // import Header from "@/components/layout/header";
 
-export default function ShopLayout({ children }) {
+export default function RootLayout({ children }) {
   return (
-    <div>
+    <main>
       {/* <Header /> */}
-      <main className="flex-1">{children}</main>
+      {children}
       <Footer />
-    </div>
+    </main>
   );
 }
