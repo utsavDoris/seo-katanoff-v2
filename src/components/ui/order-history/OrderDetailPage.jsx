@@ -1,7 +1,6 @@
 "use client";
 import CommonBgHeading from "@/components/ui/CommonBgHeading";
 import { useParams } from "next/navigation";
-import { fetchOrderDetail } from "../../../../_actions/order.action";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ProductNotFound from "@/components/shop/productNotFound";
@@ -11,6 +10,7 @@ import { setOrderMessage } from "@/store/slices/orderSlice";
 import { useAlertTimeout } from "@/hooks/use-alert-timeout";
 import { messageType } from "@/_helper";
 import FixedAlert from "@/components/ui/FixedAlert";
+import { fetchOrderDetail } from "@/_actions/order.action";
 
 export default function OrderDetailPage() {
   const params = useParams();
