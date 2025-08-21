@@ -1,6 +1,3 @@
-"use client";
-
-import { usePathname } from "next/navigation";
 import {
   FaFacebookF,
   FaInstagram,
@@ -47,7 +44,7 @@ const footerLinks = [
 ];
 
 export default function Footer() {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
   // Match dynamic /products/[productname] (but NOT /products)
   // const isProductDetailPage =
@@ -147,7 +144,7 @@ export default function Footer() {
             </ul>
             <Link href={"/terms-and-conditions"}>Terms & Conditions</Link>
             <Link href={"/privacy-policy"}>Privacy Policy</Link>
-            <Link href={"/site-map"}>Site map</Link>
+            <Link href={"/site-map"}>Site Map</Link>
           </div>
         </div>
       </div>
