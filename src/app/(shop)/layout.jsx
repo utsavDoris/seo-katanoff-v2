@@ -1,5 +1,7 @@
 // import { Footer, Header } from "@/components/dynamiComponents";
 
+import dynamic from "next/dynamic";
+
 const Footer = dynamic(() => import("@/components/layout/footer"), {
   ssr: true,
 });
