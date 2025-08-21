@@ -391,3 +391,10 @@ export const OrderDetailPage = dynamic(
     ssr: false,
   }
 );
+
+export const OrderHistoryPage = dynamic(
+  () => import("./ui/order-history/OrderHistoryPage.jsx"),
+  {
+    ssr: false,
+  }
+);
