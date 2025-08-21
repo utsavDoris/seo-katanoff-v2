@@ -5,7 +5,9 @@ import dynamic from "next/dynamic";
 export const Header = dynamic(() => import("./layout/header.jsx"), {
   ssr: false,
 });
-export const Footer = dynamic(() => import("./layout/footer.jsx"));
+export const Footer = dynamic(() => import("./layout/footer.jsx"), {
+  ssr: false,
+});
 
 export const ProfileHeader = dynamic(
   () => import("./layout/profile/header.jsx"),
