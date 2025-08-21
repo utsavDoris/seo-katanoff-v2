@@ -147,6 +147,7 @@ export default function Footer() {
             </ul>
             <Link href={"/terms-and-conditions"}>Terms & Conditions</Link>
             <Link href={"/privacy-policy"}>Privacy Policy</Link>
+            <Link href={"/site-map"}>Site map</Link>
           </div>
         </div>
       </div>

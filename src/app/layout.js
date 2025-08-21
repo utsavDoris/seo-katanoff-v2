@@ -17,10 +17,6 @@ export default function RootLayout({ children }) {
         />
       </head> */}
       <body>
-      <nav>
-        <Link href="/about-us">About Us</Link>
-        <Link href="/education">Education</Link>
-      </nav>
         <StoreProvider>
           <Layout>{children}</Layout>
         </StoreProvider>
