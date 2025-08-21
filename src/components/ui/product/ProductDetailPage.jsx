@@ -41,6 +41,7 @@ import {
   allowedVariationListForThreeSteps,
   DIAMOND_QUALITY,
   DIAMOND_SHAPE,
+  DIAMOND_WEIGHT,
   GOLD_COLOR,
   GOLD_TYPES,
   LENGTH,
@@ -61,6 +62,7 @@ import shippingIcon from "@/assets/icons/shippingDetail.svg";
 import warrantyIcon from "@/assets/icons/warranty.svg";
 import Link from "next/link";
 import { fetchCustomizeProductSettings } from "@/_actions/customize.action";
+import CommonNotFound from "../CommonNotFound";
 export const minProductQuantity = 1;
 export const maxProductQuantity = 5;
 
@@ -112,6 +114,7 @@ const ProductDetailPage = ({ customizePage }) => {
   const goldColor = helperFunctions?.stringReplacedWithSpace(
     searchParams.get("goldColor")
   );
+
   let { productName, productId } = params;
   let availableQty = 0;
 
@@ -428,7 +431,9 @@ const ProductDetailPage = ({ customizePage }) => {
     <div className={`${isCustomizePage ? "" : "pt-8 2xl:pt-12"}`}>
       {productLoading ? (
         <DetailPageSkeleton />
-      ) : productDetail && Object.keys(productDetail).length > 0 ? (
+      ) : isCustomizePage && productDetail && productDetail?.isDiamondFilter === false ? (<>
+        <CommonNotFound message="Sorry, Customization for this products is currently unavilable" btnText="Design With Diamond" href="/customize/select-diamond" btnClassName="!w-fit" />
+      </>) : productDetail && Object.keys(productDetail).length > 0 ? (
         <>
           <div className="container grid grid-cols-1 md:grid-cols-2 gap-6 xs:gap-8">
             <div className="flex h-fit w-full">
@@ -615,7 +620,7 @@ const ProductDetailPage = ({ customizePage }) => {
           </div>
 
           <div className="container pt-10 lg:pt-12 2xl:pt-16 md:p-6">
-            <ProductDetailTabs selectedVariations={selectedVariations} />
+            <ProductDetailTabs selectedVariations={selectedVariations} isCustomizePage={isCustomizePage} />
           </div>
           <section className="pt-10 lg:pt-12 xl:pt-16 container">
             <KeyFeatures />
@@ -868,7 +873,7 @@ const StickyAddToBag = (props) => {
   );
 };
 
-const ProductDetailTabs = ({ selectedVariations = [] }) => {
+const ProductDetailTabs = ({ selectedVariations = [], isCustomizePage }) => {
   const { productDetail } = useSelector(({ product }) => product);
 
   const labelClass =
@@ -984,12 +989,29 @@ const ProductDetailTabs = ({ selectedVariations = [] }) => {
                 DIAMOND_QUALITY
               )
             )}
-            {renderInfoRow(
-              "Total Carat Weight",
-              productDetail?.totalCaratWeight
-                ? `${productDetail?.totalCaratWeight} ctw`
+            {isCustomizePage && renderInfoRow(
+              "Side Diamond Weight",
+              productDetail?.sideDiamondWeight
+                ? `${productDetail?.sideDiamondWeight} ctw`
                 : ""
             )}
+            {(() => {
+              if (!isCustomizePage) return null;
+              const centerWeightValue = helperFunctions?.getVariationValue(selectedVariations, DIAMOND_WEIGHT);
+              return renderInfoRow(
+                "Center Diamond Weight",
+                centerWeightValue
+                  ? `${centerWeightValue} ctw`
+                  : ""
+              )
+            })()}
+            {!isCustomizePage &&
+              renderInfoRow(
+                "Total Carat Weight",
+                productDetail?.totalCaratWeight
+                  ? `${productDetail?.totalCaratWeight} ctw`
+                  : ""
+              )}
 
             {productDetail?.settingStyleNamesWithImg?.length > 0 &&
               renderInfoRow(

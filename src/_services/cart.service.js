@@ -43,9 +43,15 @@ const filterActiveCartItems = async ({ cartData, activeProductIds, userData = nu
     }
 
     const cartItemDiamondDetail = cartItem?.diamondDetail;
+
+    if (cartItemDiamondDetail && !findedProduct?.isDiamondFilter) {
+      updatedActiveProductIds = updatedActiveProductIds.filter((id) => id !== cartItem.productId);
+      return false;
+    }
+
     if (cartItemDiamondDetail && findedProduct?.isDiamondFilter) {
-      const { caratWeight, clarity, color } = cartItemDiamondDetail;
-      const { caratWeightRange } = findedProduct?.diamondFilters || {};
+      const { caratWeight, clarity, color, shapeId } = cartItemDiamondDetail;
+      const { caratWeightRange, diamondShapeIds } = findedProduct?.diamondFilters || {};
 
       if (
         caratWeightRange &&
@@ -70,6 +76,12 @@ const filterActiveCartItems = async ({ cartData, activeProductIds, userData = nu
         updatedActiveProductIds = updatedActiveProductIds?.filter((id) => id !== cartItem?.productId);
         return false;
       }
+
+      if (shapeId && diamondShapeIds && !diamondShapeIds.includes(shapeId)) {
+        updatedActiveProductIds = updatedActiveProductIds?.filter((id) => id !== cartItem?.productId);
+        return false;
+      }
+
     }
     return true;
   });

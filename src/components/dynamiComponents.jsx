@@ -3,16 +3,16 @@ import dynamic from "next/dynamic";
 
 // Common Component
 export const Header = dynamic(() => import("./layout/header.jsx"), {
-  ssr: false,
+  ssr: true,
 });
 export const Footer = dynamic(() => import("./layout/footer.jsx"), {
-  ssr: false,
+  ssr: true,
 });
 
 export const ProfileHeader = dynamic(
   () => import("./layout/profile/header.jsx"),
   {
-    ssr: false,
+    ssr: true,
   }
 );
 
@@ -170,10 +170,6 @@ export const CartNotFound = dynamic(
 
 export const Layout = dynamic(() => import("./layout/Layout.jsx"), {
   ssr: true,
-});
-
-export const SubscribeEmail = dynamic(() => import("./ui/SubscribeEmail.jsx"), {
-  ssr: false,
 });
 
 export const PaymentPage = dynamic(

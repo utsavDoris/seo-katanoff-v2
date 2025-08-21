@@ -58,64 +58,65 @@ export default function SelectDiamondPage() {
   const currentStep = 1;
 
   const steps = useMemo(() => {
-    if (!pId) {
-      return [
-        {
-          id: 1,
-          label: "Choose a",
-          labelDetail: "Diamond",
-        },
-        {
-          id: 2,
-          label: "Choose a",
-          labelDetail: "Setting",
-          disabled: true,
-        },
+    // if (!pId) {
+    return [
+      {
+        id: 1,
+        label: "Choose a",
+        labelDetail: "Diamond",
+      },
+      {
+        id: 2,
+        label: "Choose a",
+        labelDetail: "Setting",
+        disabled: true,
+      },
 
-        {
-          id: 3,
-          label: "Completed",
-          labelDetail: "Ring",
-          disabled: true,
-        },
-      ];
-    } else if (isDiamondSelected && pId) {
-      return [
-        {
-          id: 1,
-          label: "Choose a",
-          labelDetail: "Diamond",
-        },
-        {
-          id: 2,
-          label: "Choose a",
-          labelDetail: "Setting",
-          subOption: [
-            {
-              label: "Change",
-              route: "/customize/select-setting",
-              onClick: () => {
-                const customProductData = helperFunctions?.getCustomProduct() || {};
-                delete customProductData?.productId;
-                localStorage.setItem("customProduct", JSON.stringify(customProductData));
-              },
-            },
-          ],
-        },
+      {
+        id: 3,
+        label: "Completed",
+        labelDetail: "Ring",
+        disabled: true,
+      },
+    ];
+    // }
+    // else if (isDiamondSelected && pId) {
+    //   return [
+    //     {
+    //       id: 1,
+    //       label: "Choose a",
+    //       labelDetail: "Diamond",
+    //     },
+    //     {
+    //       id: 2,
+    //       label: "Choose a",
+    //       labelDetail: "Setting",
+    //       subOption: [
+    //         {
+    //           label: "Change",
+    //           route: "/customize/select-setting",
+    //           onClick: () => {
+    //             const customProductData = helperFunctions?.getCustomProduct() || {};
+    //             delete customProductData?.productId;
+    //             localStorage.setItem("customProduct", JSON.stringify(customProductData));
+    //           },
+    //         },
+    //       ],
+    //     },
 
-        {
-          id: 3,
-          label: "Completed",
-          labelDetail: "Ring",
-          subOption: [
-            {
-              label: "View",
-              route: "/customize/complete-ring",
-            },
-          ],
-        },
-      ];
-    }
+    //     {
+    //       id: 3,
+    //       label: "Completed",
+    //       labelDetail: "Ring",
+    //       subOption: [
+    //         {
+    //           label: "View",
+    //           route: "/customize/complete-ring",
+    //         },
+    //       ],
+    //     },
+    //   ];
+    // }
   }, [customProductDetails]);
 
 
