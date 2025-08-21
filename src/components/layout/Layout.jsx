@@ -46,7 +46,15 @@ const Layout = ({ children }) => {
     }
   }, []);
 
-  return <>{children}</>;
+  return (
+    <>
+      <nav>
+        <Link href="/about-us">About Us</Link>
+        <Link href="/education">Education</Link>
+      </nav>
+      {children}
+    </>
+  );
 };
 
 export default Layout;
