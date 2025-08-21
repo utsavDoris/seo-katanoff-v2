@@ -1,6 +1,10 @@
+"use client";
+import { useState } from "react";
 import { HeaderLinkButton } from "./button";
 
 export default function NavigationHeader() {
+  const [lastScrollY, setLastScrollY] = useState(500);
+
   const staticLinks = [
     {
       title: "Custom",
@@ -19,7 +23,9 @@ export default function NavigationHeader() {
             <li key={`static-link-${link.title}`} className={`relative `}>
               <HeaderLinkButton
                 href={link.href}
-                className={`rounded-none hover:!font-semibold flex items-center gap-1 hover:!text-primary py-2 lg:py-5`}
+                className={`rounded-none hover:!font-semibold flex items-center gap-1 hover:!text-primary py-2 lg:py-5 ${
+                  lastScrollY > 100 ? "py-2 lg:py-5" : "py-4"
+                }`}
               >
                 {link.title}
               </HeaderLinkButton>
