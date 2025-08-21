@@ -112,12 +112,12 @@ const SignUpForm = () => {
       initialValues,
     });
 
-  const currentUser = helperFunctions.getCurrentUser();
   useEffect(() => {
-    if (currentUser) {
+    const user = helperFunctions.getCurrentUser();
+    if (user) {
       router.push("/");
     }
-  }, [currentUser]);
+  }, []);
 
   useEffect(() => {
     dispatch(setUserRegisterMessage({ message: "", type: "" }));

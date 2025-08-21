@@ -188,11 +188,18 @@ const getSellingPrice = ({ price, discount = 0, isCustomized = false }) => {
   }
 };
 
-const getCurrentUser = () => {
+export const getCurrentUser = () => {
+  if (typeof window === "undefined") return null; 
+
   const currentUserJson = localStorage.getItem("currentUser");
-  const currentUser = JSON.parse(currentUserJson);
-  return currentUser;
+  try {
+    return currentUserJson ? JSON.parse(currentUserJson) : null;
+  } catch (error) {
+    console.error("Error parsing currentUser:", error);
+    return null;
+  }
 };
+
 
 // const getStatusCustomBadge = (status) => {
 //   const statusMap = {

@@ -73,16 +73,15 @@ const VerifyOTPForm = () => {
     };
   }, []);
 
-  const currentUser = helperFunctions.getCurrentUser();
-
   useEffect(() => {
+    const currentUser = helperFunctions.getCurrentUser();
     if (currentUser && !redirectingPostLogin) {
       const postLoginRedirect = localStorage.getItem("postLoginRedirect");
       if (!postLoginRedirect) {
         router.replace("/");
       }
     }
-  }, [currentUser, router, redirectingPostLogin]);
+  }, [router, redirectingPostLogin]);
 
   useEffect(() => {
     return () => {

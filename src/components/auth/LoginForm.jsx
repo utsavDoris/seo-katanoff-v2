@@ -40,6 +40,7 @@ const LoginForm = () => {
     ({ user }) => user
   );
   const { isHovered } = useSelector(({ common }) => common);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useAlertTimeout(userRegisterMessage, () =>
     dispatch(setUserRegisterMessage({ message: "", type: "" }))
@@ -70,13 +71,14 @@ const LoginForm = () => {
       initialValues,
     });
 
-  const currentUser = helperFunctions.getCurrentUser();
-
   useEffect(() => {
-    if (currentUser) {
+    const user = helperFunctions.getCurrentUser();
+    setCurrentUser(user);
+
+    if (user) {
       router.push("/");
     }
-  }, [currentUser]);
+  }, []);
 
   useEffect(() => {
     return () => {
