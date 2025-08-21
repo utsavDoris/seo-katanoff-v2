@@ -188,10 +188,17 @@ const getSellingPrice = ({ price, discount = 0, isCustomized = false }) => {
   }
 };
 
-const getCurrentUser = () => {
-  const currentUserJson = localStorage.getItem("currentUser");
-  const currentUser = JSON.parse(currentUserJson);
-  return currentUser;
+export const getCurrentUser = () => {
+  if (typeof window === "undefined") {
+    return null; // Running on server, no localStorage
+  }
+  try {
+    const currentUserJson = localStorage.getItem("currentUser");
+    return currentUserJson ? JSON.parse(currentUserJson) : null;
+  } catch (error) {
+    console.error("Error parsing currentUser:", error);
+    return null;
+  }
 };
 
 // const getStatusCustomBadge = (status) => {
