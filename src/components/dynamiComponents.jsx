@@ -172,6 +172,13 @@ export const Layout = dynamic(() => import("./layout/Layout.jsx"), {
   ssr: false,
 });
 
+export const ShoplayoutWrapper = dynamic(
+  () => import("./layout/shoplayoutWrapper.jsx"),
+  {
+    ssr: false,
+  }
+);
+
 export const SubscribeEmail = dynamic(() => import("./ui/SubscribeEmail.jsx"), {
   ssr: false,
 });

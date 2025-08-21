@@ -1,14 +1,9 @@
-// import { Footer, Header } from "@/components/dynamiComponents";
-import Footer from "@/components/layout/footer";
-
-// import Header from "@/components/layout/header";
+import { ShoplayoutWrapper } from "@/components/dynamiComponents";
 
 export default function ShopLayout({ children }) {
   return (
     <main>
-      {/* <Header /> */}
-      {children}
-      <Footer />
+      <ShoplayoutWrapper>{children}</ShoplayoutWrapper>
     </main>
   );
 }

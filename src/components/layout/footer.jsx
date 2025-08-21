@@ -177,7 +177,6 @@ import logo from "@/assets/images/footer-logo.webp";
 import Link from "next/link";
 import CustomImg from "../ui/custom-img";
 import { SubscribeEmail } from "../dynamiComponents";
-import { headers } from "next/headers";
 
 const footerLinks = [
   {
@@ -204,9 +203,7 @@ const footerLinks = [
   },
 ];
 
-export default function Footer() {
-  const headersList = headers();
-  const pathname = headersList.get("x-next-pathname") || "";
+export default function Footer({pathname}) {
   const isProductDetailPage =
     pathname.startsWith("/products/") && pathname.split("/").length === 3;
   const customizePage = pathname.startsWith("/customize/complete-ring");
