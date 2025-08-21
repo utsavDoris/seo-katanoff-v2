@@ -178,7 +178,6 @@ import logo from "@/assets/images/footer-logo.webp";
 import Link from "next/link";
 import CustomImg from "../ui/custom-img";
 import { SubscribeEmail } from "../dynamiComponents";
-import { usePathname } from "next/navigation";
 
 const footerLinks = [
   {
