@@ -1,7 +1,8 @@
 // import { Footer, Header } from "@/components/dynamiComponents";
 
-import Footer from "@/components/layout/footer";
-
+const Footer = dynamic(() => import("@/components/layout/footer"), {
+  ssr: true,
+});
 // import Footer from "@/components/layout/footer";
 // import Header from "@/components/layout/header";
 

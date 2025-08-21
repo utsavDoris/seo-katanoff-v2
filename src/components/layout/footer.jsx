@@ -158,7 +158,7 @@
 //   );
 // }
 
-// "use client";
+"use client";
 import {
   FaFacebookF,
   FaInstagram,
@@ -205,21 +205,21 @@ const footerLinks = [
 ];
 
 export default function Footer() {
-  // const pathname = usePathname();
-  // const isProductDetailPage =
-  //   pathname.startsWith("/products/") && pathname.split("/").length === 3;
-  // const customizePage = pathname.startsWith("/customize/complete-ring");
-  // // Static routes to match exactly
-  // const noMarginStaticRoutes = [];
+  const pathname = usePathname();
+  const isProductDetailPage =
+    pathname.startsWith("/products/") && pathname.split("/").length === 3;
+  const customizePage = pathname.startsWith("/customize/complete-ring");
+  // Static routes to match exactly
+  const noMarginStaticRoutes = [];
 
-  // const shouldRemoveMargin =
-  //   customizePage ||
-  //   isProductDetailPage ||
-  //   noMarginStaticRoutes.includes(pathname);
+  const shouldRemoveMargin =
+    customizePage ||
+    isProductDetailPage ||
+    noMarginStaticRoutes.includes(pathname);
 
-  // const footerMarginClass = shouldRemoveMargin
-  //   ? ""
-  //   : "mt-10 md:mt-14 lg:mt-20 2xl:mt-20";
+  const footerMarginClass = shouldRemoveMargin
+    ? ""
+    : "mt-10 md:mt-14 lg:mt-20 2xl:mt-20";
 
   const mediaLinks = [
     { icon: <FaFacebookF />, href: facebookUrl },
@@ -229,8 +229,7 @@ export default function Footer() {
   ];
 
   return (
-    // <footer className={`${footerMarginClass} bg-primary relative`}>
-    <footer className={`bg-primary relative`}>
+    <footer className={`${footerMarginClass} bg-primary relative`}>
       <div className="pt-20 pb-10 2xl:pt-24 2xl:pb-14 text-white px-6 md:px-14 2xl:px-20">
         <div className="z-10 relative grid grid-cols-1 md:grid-cols-12 gap-10">
           <div className="md:col-span-6 lg:col-span-3">
