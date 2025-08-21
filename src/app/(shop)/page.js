@@ -1,5 +1,6 @@
-export default function Home() {
-  return (
-    <><h1>Home</h1></>
-  );
-}
+const { HomePage } = require("@/components/dynamiComponents");
+
+const Home = () => {
+  return <HomePage />;
+};
+export default Home;

@@ -2,6 +2,70 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/Figtree/static/Figtree-Medium.ttf") format("woff2"),
+    url("/fonts/Figtree/static/Figtree-Medium.ttf") format("woff");
+  font-weight: 500;
+  font-style: medium;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/Figtree/static/Figtree-Regular.ttf") format("woff2"),
+    url("/fonts/Figtree/static/Figtree-Regular.ttf") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/Figtree/static/Figtree-SemiBold.ttf") format("woff2"),
+    url("/fonts/Figtree/static/Figtree-SemiBold.ttf") format("woff");
+  font-weight: 600;
+  font-style: semi-bold;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/Figtree/static/Figtree-Bold.ttf") format("woff2"),
+    url("/fonts/Figtree/static/Figtree-Bold.ttf") format("woff");
+  font-weight: 700;
+  font-style: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/Figtree/static/Figtree-Black.ttf") format("woff2"),
+    url("/fonts/Figtree/static/Figtree-Black.ttf") format("woff");
+  font-weight: 900;
+  font-style: black;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Castoro";
+  src: url("/fonts/Castoro/Castoro-Regular.ttf") format("woff2"),
+    url("/fonts/Castoro/Castoro-Regular.ttf") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/Figtree/static/Figtree-LightItalic.ttf") format("woff2"),
+    url("/fonts/Figtree/static/Figtree-LightItalic.ttf") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --primary: #202a4e;
   --offwhite: #fafaf8;
@@ -267,8 +331,8 @@ ul {
   margin-left: 0;
 }
 
-.no-gutters > .col,
-.no-gutters > [class*="col-"] {
+.no-gutters>.col,
+.no-gutters>[class*="col-"] {
   padding-right: 0;
   padding-left: 0;
 }
@@ -339,6 +403,7 @@ ul {
 }
 
 @media (max-width: 767px) {
+
   .container,
   .container1400,
   .container1300 {
@@ -373,6 +438,7 @@ ul {
   scrollbar-width: thin;
   scrollbar-color: #000 transparent;
 }
+
 
 .scale-default {
   transform: scale(0.2);
@@ -413,12 +479,12 @@ ul {
     transform: scale(1) !important;
   }
 
-  .custom-slick-slider .slick-center + .slick-slide,
+  .custom-slick-slider .slick-center+.slick-slide,
   .custom-slick-slider .slick-active:not(.slick-center):not(.slick-cloned) {
     transform: scale(0.5) !important;
   }
 
-  .custom-slick-slider .slick-center + .slick-slide + .slick-slide {
+  .custom-slick-slider .slick-center+.slick-slide+.slick-slide {
     transform: scale(0.4) !important;
   }
 }

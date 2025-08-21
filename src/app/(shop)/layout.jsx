@@ -1,12 +1,11 @@
-import NavigationHeader from "@/components/navigationHeader";
+import { Footer, Header } from "@/components/dynamiComponents";
 
 export default function ShopLayout({ children }) {
   return (
     <div>
-      {/* <h1>Header</h1> */}
-      <NavigationHeader />
-      <main>{children}</main>
-      <h1>Footer</h1>
+      <Header />
+      <main className="flex-1">{children}</main>
+      <Footer />
     </div>
   );
 }
