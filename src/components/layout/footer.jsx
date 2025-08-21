@@ -158,7 +158,7 @@
 //   );
 // }
 
-"use client";
+// "use client";
 import {
   FaFacebookF,
   FaInstagram,
