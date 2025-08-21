@@ -160,7 +160,6 @@
 
 "use client";
 
-import { usePathname } from "next/navigation";
 import {
   FaFacebookF,
   FaInstagram,
@@ -206,9 +205,7 @@ const footerLinks = [
   },
 ];
 
-export default function Footer() {
-  const pathname = usePathname();
-
+export default function Footer({ pathname }) {
   // Match dynamic /products/[productname] (but NOT /products)
   const isProductDetailPage =
     pathname.startsWith("/products/") && pathname.split("/").length === 3;

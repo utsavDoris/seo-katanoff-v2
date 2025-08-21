@@ -1,20 +1,18 @@
 // import { Footer, Header } from "@/components/dynamiComponents";
-
+"use client";
 import { Footer } from "@/components/dynamiComponents";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 // import Header from "@/components/layout/header";
 
 export default function ShopLayout({ children }) {
+  const pathname = usePathname();
   return (
     <main>
-      {/* <nav>
-        <Link href="/about-us">About Us</Link>
-        <Link href="/education">Education</Link>
-      </nav> */}
       {/* <Header /> */}
       {children}
-      <Footer />
+      <Footer pathname={pathname} />
     </main>
   );
 }
