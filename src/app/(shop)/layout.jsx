@@ -1,14 +1,14 @@
 // import { Footer, Header } from "@/components/dynamiComponents";
 
-import Footer from "@/components/layout/footer";
-import Header from "@/components/layout/header";
+// import Footer from "@/components/layout/footer";
+// import Header from "@/components/layout/header";
 
 export default function ShopLayout({ children }) {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <main className="flex-1">{children}</main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
