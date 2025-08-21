@@ -1,7 +1,6 @@
 // import { Footer, Header } from "@/components/dynamiComponents";
 "use client";
-import { Footer } from "@/components/dynamiComponents";
-import Link from "next/link";
+import Footer from "@/components/layout/footer";
 import { usePathname } from "next/navigation";
 
 // import Header from "@/components/layout/header";
