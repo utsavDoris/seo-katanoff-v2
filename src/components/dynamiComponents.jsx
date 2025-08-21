@@ -5,9 +5,7 @@ import dynamic from "next/dynamic";
 export const Header = dynamic(() => import("./layout/header.jsx"), {
   ssr: false,
 });
-export const Footer = dynamic(() => import("./layout/footer.jsx"), {
-  ssr: false,
-});
+export const Footer = dynamic(() => import("./layout/footer.jsx"));
 
 export const ProfileHeader = dynamic(
   () => import("./layout/profile/header.jsx"),
@@ -171,13 +169,6 @@ export const CartNotFound = dynamic(
 export const Layout = dynamic(() => import("./layout/Layout.jsx"), {
   ssr: false,
 });
-
-export const ShoplayoutWrapper = dynamic(
-  () => import("./layout/shoplayoutWrapper.jsx"),
-  {
-    ssr: false,
-  }
-);
 
 export const SubscribeEmail = dynamic(() => import("./ui/SubscribeEmail.jsx"), {
   ssr: false,

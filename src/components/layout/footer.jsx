@@ -158,6 +158,7 @@
 //   );
 // }
 
+"use client";
 import {
   FaFacebookF,
   FaInstagram,
@@ -177,6 +178,7 @@ import logo from "@/assets/images/footer-logo.webp";
 import Link from "next/link";
 import CustomImg from "../ui/custom-img";
 import { SubscribeEmail } from "../dynamiComponents";
+import { usePathname } from "next/navigation";
 
 const footerLinks = [
   {
@@ -203,7 +205,8 @@ const footerLinks = [
   },
 ];
 
-export default function Footer({pathname}) {
+export default function Footer() {
+  const pathname = usePathname();
   const isProductDetailPage =
     pathname.startsWith("/products/") && pathname.split("/").length === 3;
   const customizePage = pathname.startsWith("/customize/complete-ring");
