@@ -8,13 +8,13 @@ import Link from "next/link";
 export default function ShopLayout({ children }) {
   return (
     <main>
-      <nav>
+      {/* <nav>
         <Link href="/about-us">About Us</Link>
         <Link href="/education">Education</Link>
-      </nav>
+      </nav> */}
       {/* <Header /> */}
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 }

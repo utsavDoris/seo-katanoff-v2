@@ -13,10 +13,10 @@ import {
   pinterestUrl,
   tiktokUrl,
 } from "@/_helper";
-import { CustomImg } from "../dynamiComponents";
 import logo from "@/assets/images/footer-logo.webp";
 import Link from "next/link";
 import SubscribeEmail from "../ui/SubscribeEmail";
+import CustomImg from "../ui/custom-img";
 
 const footerLinks = [
   {
