@@ -1,5 +1,7 @@
 // import { Footer, Header } from "@/components/dynamiComponents";
 
+import Link from "next/link";
+
 // import Footer from "@/components/layout/footer";
 // import Header from "@/components/layout/header";
 
