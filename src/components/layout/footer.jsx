@@ -176,7 +176,7 @@ import {
 import logo from "@/assets/images/footer-logo.webp";
 import Link from "next/link";
 import CustomImg from "../ui/custom-img";
-import SubscribeEmail from "../ui/SubscribeEmail";
+import { SubscribeEmail } from "../dynamiComponents";
 
 const footerLinks = [
   {
