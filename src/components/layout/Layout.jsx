@@ -46,11 +46,7 @@ const Layout = ({ children }) => {
     }
   }, []);
 
-  return (
-    <>
-      {children}
-    </>
-  );
+  return children;
 };
 
 export default Layout;

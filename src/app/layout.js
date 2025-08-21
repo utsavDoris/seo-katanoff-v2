@@ -1,5 +1,6 @@
 import StoreProvider from "@/store/provider";
 import "./globals.css";
+import { Layout } from "@/components/dynamiComponents";
 // import { generateMetadata } from "@/_utils/metaConfig";
 // import { googleAnalyticsId, googleSiteVerificationId } from "@/_helper";
 // import { GoogleAnalytics } from "@next/third-parties/google";
@@ -16,7 +17,9 @@ export default function RootLayout({ children }) {
       </head> */}
       <body>
         <StoreProvider>
-          {children}
+          <Layout>
+            {children}
+          </Layout>
         </StoreProvider>
       </body>
       {/* <GoogleAnalytics gaId={googleAnalyticsId} /> */}
