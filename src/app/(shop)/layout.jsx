@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic.js";
 
-const Footer = dynamic(() => import("./layout/footer.jsx"), {
+const Footer = dynamic(() => import("../../components/layout/footer"), {
   ssr: false,
 });
 
