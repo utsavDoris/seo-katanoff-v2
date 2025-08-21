@@ -48,10 +48,6 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <nav>
-        <Link href="/about-us">About Us</Link>
-        <Link href="/education">Education</Link>
-      </nav>
       {children}
     </>
   );

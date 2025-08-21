@@ -1,7 +1,6 @@
 import StoreProvider from "@/store/provider";
 import "./globals.css";
 import Layout from "@/components/layout/Layout";
-import Link from "next/link";
 // import { generateMetadata } from "@/_utils/metaConfig";
 // import { googleAnalyticsId, googleSiteVerificationId } from "@/_helper";
 // import { GoogleAnalytics } from "@next/third-parties/google";
@@ -18,7 +17,7 @@ export default function RootLayout({ children }) {
       </head> */}
       <body>
         <StoreProvider>
-          <Layout>{children}</Layout>
+          {children}
         </StoreProvider>
       </body>
       {/* <GoogleAnalytics gaId={googleAnalyticsId} /> */}
