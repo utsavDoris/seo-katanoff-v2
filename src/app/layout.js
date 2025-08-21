@@ -1,6 +1,6 @@
 import StoreProvider from "@/store/provider";
 import "./globals.css";
-import { Layout } from "@/components/dynamiComponents";
+import Layout from "@/components/layout/Layout";
 // import { generateMetadata } from "@/_utils/metaConfig";
 // import { googleAnalyticsId, googleSiteVerificationId } from "@/_helper";
 // import { GoogleAnalytics } from "@next/third-parties/google";
