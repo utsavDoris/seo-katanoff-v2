@@ -15,7 +15,7 @@ import {
 } from "@/_helper";
 import logo from "@/assets/images/footer-logo.webp";
 import Link from "next/link";
-import SubscribeEmail from "../ui/SubscribeEmail";
+// import SubscribeEmail from "../ui/SubscribeEmail";
 import CustomImg from "../ui/custom-img";
 
 const footerLinks = [
@@ -120,7 +120,7 @@ export default function Footer() {
               Perks include early access to new product launches, exclusive
               invites to store openings, and more!
             </p>
-            <SubscribeEmail />
+            {/* <SubscribeEmail /> */}
             {/* <div className="flex gap-5 mt-5 lg:mt-8">
               {mediaLinks?.map((media, index) => {
                 return (
