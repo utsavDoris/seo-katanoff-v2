@@ -388,6 +388,6 @@ export const HeroBanner = dynamic(() => import("./ui/HeroBanner.jsx"), {
 export const OrderDetailPage = dynamic(
   () => import("./ui/order-history/OrderDetailPage.jsx"),
   {
-    ssr: true,
+    ssr: false,
   }
 );
