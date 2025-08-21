@@ -384,3 +384,10 @@ export const EllipsisLoader = dynamic(() => import("./ui/EllipsisLoader.jsx"), {
 export const HeroBanner = dynamic(() => import("./ui/HeroBanner.jsx"), {
   ssr: false,
 });
+
+export const OrderDetailPage = dynamic(
+  () => import("./ui/order-history/OrderDetailPage.jsx"),
+  {
+    ssr: true,
+  }
+);
