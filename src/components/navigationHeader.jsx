@@ -10,10 +10,10 @@ export default function NavigationHeader() {
       title: "Custom",
       href: "/custom-jewelry",
     },
-    // {
-    //   title: "About Katanoff",
-    //   href: "/about-us",
-    // },
+    {
+      title: "About Katanoff",
+      href: "/about-us",
+    },
   ];
   return (
     <header>
@@ -23,7 +23,7 @@ export default function NavigationHeader() {
             <li key={`static-link-${link.title}`} className={`relative `}>
               <HeaderLinkButton
                 href={link.href}
-                className={`rounded-none hover:!font-semibold flex items-center gap-1 hover:!text-primary py-2 lg:py-5 ${
+                className={`rounded-none hover:!font-semibold flex items-center gap-1 hover:!text-primary${
                   lastScrollY > 100 ? "py-2 lg:py-5" : "py-4"
                 }`}
               >
