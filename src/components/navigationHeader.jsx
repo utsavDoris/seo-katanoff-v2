@@ -10,10 +10,10 @@ export default function NavigationHeader() {
       title: "Custom",
       href: "/custom-jewelry",
     },
-    {
-      title: "About Katanoff",
-      href: "/about-us",
-    },
+    // {
+    //   title: "About Katanoff",
+    //   href: "/about-us",
+    // },
   ];
   return (
     <header>
