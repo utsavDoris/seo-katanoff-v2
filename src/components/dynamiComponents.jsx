@@ -424,6 +424,6 @@ export const TrackYourReturnPage = dynamic(
 export const ProfileDropdown = dynamic(
   () => import("./ui/ProfileDropdown.jsx"),
   {
-    ssr: true,
+    ssr: false,
   }
 );
