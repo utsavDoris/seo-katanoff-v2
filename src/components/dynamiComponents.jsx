@@ -402,3 +402,10 @@ export const OrderHistoryPage = dynamic(
 export const SubscribeEmail = dynamic(() => import("./ui/SubscribeEmail.jsx"), {
   ssr: false,
 });
+
+export const TrackYourOrderPage = dynamic(
+  () => import("./ui/order/TrackYourOrderPage.jsx"),
+  {
+    ssr: false,
+  }
+);
