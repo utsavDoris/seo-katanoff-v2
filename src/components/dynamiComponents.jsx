@@ -169,7 +169,7 @@ export const CartNotFound = dynamic(
 );
 
 export const Layout = dynamic(() => import("./layout/Layout.jsx"), {
-  ssr: false,
+  ssr: true,
 });
 
 export const PaymentPage = dynamic(
