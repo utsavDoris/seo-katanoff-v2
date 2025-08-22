@@ -5,7 +5,7 @@ export default function ShopLayout({ children }) {
   return (
     <main>
       {/* <Header /> */}
-      {/* {children} */}
+      {children}
       <Footer />
     </main>
   );
