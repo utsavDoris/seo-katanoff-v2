@@ -6,6 +6,7 @@ import { getMenuList } from "@/_actions/home.action";
 import { useEffect, useRef, useState } from "react";
 import {
   CustomImg,
+  ProfileDropdown,
   ProfileNavigationHeader,
   SearchBar,
 } from "../../dynamiComponents";
@@ -18,7 +19,6 @@ import textLogo from "@/assets/images/logo-text.webp";
 import miniLogo from "@/assets/images/mini-logo.webp";
 import CartPopup from "../../ui/CartPopup";
 import { fetchCart } from "@/_actions/cart.action";
-import ProfileDropdown from "@/components/ui/ProfileDropdown";
 
 export default function Header() {
   const dispatch = useDispatch();

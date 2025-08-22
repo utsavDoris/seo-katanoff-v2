@@ -19,6 +19,7 @@ import engagementHeader from "@/assets/images/engagement-header.webp";
 import {
   CartIconInCheckout,
   CustomImg,
+  ProfileDropdown,
   ProgressiveImg,
   SearchBar,
 } from "@/components/dynamiComponents";
@@ -32,7 +33,6 @@ import {
   WEDDING,
   WEDDING_RINGS,
 } from "@/_helper/constants";
-import ProfileDropdown from "../ui/ProfileDropdown";
 import SkeletonLoader from "../ui/skeletonLoader";
 import { usePathname } from "next/navigation";
 import {

@@ -377,6 +377,10 @@ export const CartIconInCheckout = dynamic(
   }
 );
 
+export const CartPopup = dynamic(() => import("./ui/CartPopup.jsx"), {
+  ssr: false,
+});
+
 export const EllipsisLoader = dynamic(() => import("./ui/EllipsisLoader.jsx"), {
   ssr: false,
 });
@@ -412,6 +416,13 @@ export const TrackYourOrderPage = dynamic(
 
 export const TrackYourReturnPage = dynamic(
   () => import("./ui/return/TrackYourReturnPage.jsx"),
+  {
+    ssr: false,
+  }
+);
+
+export const ProfileDropdown = dynamic(
+  () => import("./ui/ProfileDropdown.jsx"),
   {
     ssr: false,
   }

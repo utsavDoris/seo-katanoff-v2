@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import {
   CartIconInCheckout,
-  CustomImg,
-  NavigationHeader,
+  CartPopup,
+  ProfileDropdown,
+  // NavigationHeader,
   SearchBar,
 } from "@/components/dynamiComponents";
 import {
@@ -26,12 +27,11 @@ import flagUs from "@/assets/images/flag-us.webp";
 import textLogo from "@/assets/images/logo-text.webp";
 import diamondIcon from "@/assets/icons/diamond.svg";
 import calendarIcon from "@/assets/icons/calendar.svg";
-import CartPopup from "@/components/ui/CartPopup";
-import ProfileDropdown from "@/components/ui/ProfileDropdown";
 import { usePathname } from "next/navigation";
 import { getMenuList } from "@/_actions/home.action";
 import { helperFunctions } from "@/_helper";
 import miniLogo from "@/assets/images/mini-logo.webp";
+import CustomImg from "../ui/custom-img";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -226,7 +226,7 @@ export default function Header() {
           lastScrollY={lastScrollY}
           isHeaderVisible={isHeaderVisible}
         />
-        <NavigationHeader />
+        {/* <NavigationHeader /> */}
       </header>
     </>
   );
