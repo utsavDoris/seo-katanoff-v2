@@ -11,25 +11,25 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { HeaderLinkButton } from "./button";
 import { fetchCart } from "@/_actions/cart.action";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 export default function ProfileDropdown({ className = "", uniqueId }) {
   const dispatch = useDispatch();
   const router = useRouter();
   const pathname = usePathname();
   const [currentUser, setCurrentUser] = useState(null);
 
-  const handleLoginClick = () => {
+  const handleLoginClick = useCallback(() => {
     if (pathname === "/checkout") {
       localStorage.setItem("postLoginRedirect", "/checkout");
     }
-  };
+  }, []);
   const { openProfileDropdown, lastScrollY } = useSelector(
     ({ common }) => common
   );
   useEffect(() => {
     let user = helperFunctions?.getCurrentUser();
-    if(user){
-      setCurrentUser(user)
+    if (user) {
+      setCurrentUser(user);
     }
   }, [currentUser]);
 
@@ -43,12 +43,12 @@ export default function ProfileDropdown({ className = "", uniqueId }) {
     }
   };
 
-  const logOutHandler = () => {
+  const logOutHandler = useCallback(() => {
     localStorage.removeItem("currentUser");
     Cookies.remove("token");
     dispatch(fetchCart());
     router.push("/");
-  };
+  }, []);
 
   useEffect(() => {
     if (
