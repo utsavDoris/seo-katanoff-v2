@@ -188,16 +188,10 @@ const getSellingPrice = ({ price, discount = 0, isCustomized = false }) => {
   }
 };
 
-export const getCurrentUser = () => {
-  if (typeof window === "undefined") return null; 
-
+const getCurrentUser = () => {
   const currentUserJson = localStorage.getItem("currentUser");
-  try {
-    return currentUserJson ? JSON.parse(currentUserJson) : null;
-  } catch (error) {
-    console.error("Error parsing currentUser:", error);
-    return null;
-  }
+  const currentUser = JSON.parse(currentUserJson);
+  return currentUser;
 };
 
 
