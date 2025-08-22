@@ -18,12 +18,11 @@ import flashDeal from "@/assets/images/flash-deal.webp";
 import engagementHeader from "@/assets/images/engagement-header.webp";
 import {
   CartIconInCheckout,
-  CustomImg,
+  CartPopup,
   ProfileDropdown,
   ProgressiveImg,
   SearchBar,
 } from "@/components/dynamiComponents";
-import CartPopup from "../ui/CartPopup";
 import {
   DIAMOND_SHAPE,
   ENGAGEMENT,
@@ -42,6 +41,7 @@ import {
 import { helperFunctions } from "@/_helper";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import calendarIcon from "@/assets/icons/calendar.svg";
+import CustomImg from "../ui/custom-img";
 
 const headingClass =
   "font-castoro text-[0.9375em] leading-[1.0625em] mb-4 pb-2 border-b border-baseblack";
