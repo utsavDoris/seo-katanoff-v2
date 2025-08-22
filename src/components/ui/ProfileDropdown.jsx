@@ -11,21 +11,31 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { HeaderLinkButton } from "./button";
 import { fetchCart } from "@/_actions/cart.action";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
 export default function ProfileDropdown({ className = "", uniqueId }) {
   const dispatch = useDispatch();
   const router = useRouter();
   const pathname = usePathname();
 
-  const handleLoginClick = () => {
-    if (pathname === "/checkout") {
-      localStorage.setItem("postLoginRedirect", "/checkout");
-    }
-  };
   const { openProfileDropdown, lastScrollY } = useSelector(
     ({ common }) => common
   );
-  let currentUser = helperFunctions?.getCurrentUser();
+
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const user = helperFunctions?.getCurrentUser();
+      setCurrentUser(user);
+    }
+  }, []);
+
+  const handleLoginClick = () => {
+    if (pathname === "/checkout" && typeof window !== "undefined") {
+      localStorage.setItem("postLoginRedirect", "/checkout");
+    }
+  };
 
   const isOpen = openProfileDropdown === uniqueId;
 
@@ -38,7 +48,9 @@ export default function ProfileDropdown({ className = "", uniqueId }) {
   };
 
   const logOutHandler = () => {
-    localStorage.removeItem("currentUser");
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("currentUser");
+    }
     Cookies.remove("token");
     dispatch(fetchCart());
     router.push("/");
