@@ -398,3 +398,7 @@ export const OrderHistoryPage = dynamic(
     ssr: false,
   }
 );
+
+export const SubscribeEmail = dynamic(() => import("./ui/SubscribeEmail.jsx"), {
+  ssr: false,
+});
