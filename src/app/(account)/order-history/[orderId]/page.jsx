@@ -1,5 +1,6 @@
-import { OrderDetailPage } from "@/components/dynamiComponents";
+// import { OrderDetailPage } from "@/components/dynamiComponents";
 
 export default function OrderDetail() {
-  return <OrderDetailPage />;
+  return <h1>OrderDetail</h1>;
+  // return <OrderDetailPage />;
 }
