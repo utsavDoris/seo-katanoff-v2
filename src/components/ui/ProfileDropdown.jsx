@@ -11,11 +11,12 @@ import { IoIosArrowDown } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { HeaderLinkButton } from "./button";
 import { fetchCart } from "@/_actions/cart.action";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 export default function ProfileDropdown({ className = "", uniqueId }) {
   const dispatch = useDispatch();
   const router = useRouter();
   const pathname = usePathname();
+  const [currentUser, setCurrentUser] = useState(null);
 
   const handleLoginClick = () => {
     if (pathname === "/checkout") {
@@ -25,7 +26,12 @@ export default function ProfileDropdown({ className = "", uniqueId }) {
   const { openProfileDropdown, lastScrollY } = useSelector(
     ({ common }) => common
   );
-  let currentUser = helperFunctions?.getCurrentUser();
+  useEffect(() => {
+    let user = helperFunctions?.getCurrentUser();
+    if(user){
+      setCurrentUser(user)
+    }
+  }, [currentUser]);
 
   const isOpen = openProfileDropdown === uniqueId;
 
