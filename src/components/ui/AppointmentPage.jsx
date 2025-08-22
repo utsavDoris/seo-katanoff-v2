@@ -1,8 +1,7 @@
-import AppointmentForm from "@/components/ui/AppointmentForm";
 import KeyFeatures from "@/components/ui/KeyFeatures";
 import bookAppointmentDesktop from "@/assets/images/appointment/book-appointment-desktop.webp";
 import bookAppointmentMobile from "@/assets/images/appointment/book-appointment-mobile.webp";
-import { HeroBanner } from "@/components/dynamiComponents";
+import { AppointmentForm, HeroBanner } from "@/components/dynamiComponents";
 
 export default function AppointmentPage() {
   return (
