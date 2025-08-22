@@ -1,7 +1,5 @@
 import AppointmentPage from "@/components/ui/AppointmentPage";
 
-const AppointmentCustomJewelry = () => {
+export default function BookAppointment() {
   return <AppointmentPage />;
-};
-
-export default AppointmentCustomJewelry;
+}
