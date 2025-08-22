@@ -409,3 +409,10 @@ export const TrackYourOrderPage = dynamic(
     ssr: false,
   }
 );
+
+export const TrackYourReturnPage = dynamic(
+  () => import("./ui/return/TrackYourReturnPage.jsx"),
+  {
+    ssr: false,
+  }
+);
