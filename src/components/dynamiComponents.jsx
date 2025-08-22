@@ -1,4 +1,5 @@
 "use client";
+import { tree } from "next/dist/build/templates/app-page.js";
 import dynamic from "next/dynamic";
 
 // Common Component
@@ -424,6 +425,6 @@ export const TrackYourReturnPage = dynamic(
 export const ProfileDropdown = dynamic(
   () => import("./ui/ProfileDropdown.jsx"),
   {
-    ssr: false,
+    ssr: true,
   }
 );
