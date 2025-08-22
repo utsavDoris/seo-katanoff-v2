@@ -1,5 +1,4 @@
 "use client";
-import { tree } from "next/dist/build/templates/app-page.js";
 import dynamic from "next/dynamic";
 
 // Common Component
