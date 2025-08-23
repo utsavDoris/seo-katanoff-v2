@@ -5,6 +5,12 @@ import dynamic from "next/dynamic";
 export const Header = dynamic(() => import("./layout/header.jsx"), {
   ssr: true,
 });
+
+export const HeaderLinkButton = dynamic(
+  () => import("./ui/button.jsx").then((mod) => mod.HeaderLinkButton),
+  { ssr: true }
+);
+
 export const Footer = dynamic(() => import("./layout/footer.jsx"), {
   ssr: true,
 });
@@ -37,7 +43,7 @@ export const NavigationHeader = dynamic(
 export const ProfileNavigationHeader = dynamic(
   () => import("./layout/profile/navigationHeader.jsx"),
   {
-    ssr: false,
+    ssr: true,
   }
 );
 
@@ -169,7 +175,7 @@ export const CartNotFound = dynamic(
 );
 
 export const Layout = dynamic(() => import("./layout/Layout.jsx"), {
-  ssr: false,
+  ssr: true,
 });
 
 export const PaymentPage = dynamic(

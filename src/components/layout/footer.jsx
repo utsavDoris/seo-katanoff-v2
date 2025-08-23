@@ -66,10 +66,10 @@ export default function Footer() {
     : "mt-10 md:mt-14 lg:mt-20 2xl:mt-20";
 
   const mediaLinks = [
-    { icon: <FaFacebookF />, href: facebookUrl },
+    // { icon: <FaFacebookF />, href: facebookUrl },
     { icon: <FaInstagram />, href: instagramUrl },
-    { icon: <FaPinterestP />, href: pinterestUrl },
-    { icon: <FaTiktok />, href: tiktokUrl },
+    // { icon: <FaPinterestP />, href: pinterestUrl },
+    // { icon: <FaTiktok />, href: tiktokUrl },
   ];
 
   return (
@@ -124,7 +124,7 @@ export default function Footer() {
               invites to store openings, and more!
             </p>
             <SubscribeEmail />
-            {/* <div className="flex gap-5 mt-5 lg:mt-8">
+            <div className="flex gap-5 mt-5 lg:mt-8">
               {mediaLinks?.map((media, index) => {
                 return (
                   <Link
@@ -137,7 +137,7 @@ export default function Footer() {
                   </Link>
                 );
               })}
-            </div> */}
+            </div>
           </div>
         </div>
         <div className="lg:h-[30vh] 2xl:h-[35vh] md:flex md:justify-end md:items-end mt-10 md:mt-14 lg:mt-0">
@@ -145,8 +145,15 @@ export default function Footer() {
             <ul className="md:list-disc">
               <li>© {CURRENT_YEAR} Katanoff.com</li>
             </ul>
-            <Link href={"/terms-and-conditions"}>Terms & Conditions</Link>
-            <Link href={"/privacy-policy"}>Privacy Policy</Link>
+            <Link href="/terms-and-conditions" className="hover:underline">
+              Terms & Conditions
+            </Link>
+            <Link href="/privacy-policy" className="hover:underline">
+              Privacy Policy
+            </Link>
+            <Link href="/site-map" className="hover:underline">
+              Site Map
+            </Link>
           </div>
         </div>
       </div>

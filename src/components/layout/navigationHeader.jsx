@@ -1,5 +1,4 @@
 "use client";
-import { HeaderLinkButton } from "@/components/ui/button";
 import {
   setIsMenuOpen,
   setLastScrollY,
@@ -19,7 +18,8 @@ import engagementHeader from "@/assets/images/engagement-header.webp";
 import {
   CartIconInCheckout,
   CartPopup,
-  // ProfileDropdown,
+  HeaderLinkButton,
+  ProfileDropdown,
   ProgressiveImg,
   SearchBar,
 } from "@/components/dynamiComponents";
@@ -944,10 +944,10 @@ export default function NavigationHeader() {
               lastScrollY={lastScrollY}
               isHeaderVisible={isHeaderVisible}
             />
-            {/* <ProfileDropdown
+            <ProfileDropdown
               className={"hidden lg:block"}
               uniqueId={"desktop-nav-profile"}
-            /> */}
+            />
             {!hideCartPopup ? <CartPopup /> : <CartIconInCheckout />}
           </div>
         ) : null}
@@ -1496,10 +1496,10 @@ export default function NavigationHeader() {
                     </div>
                   );
                 })}
-                {/* <ProfileDropdown
+                <ProfileDropdown
                   className={"block lg:hidden"}
                   uniqueId={"mobile-nav-profile"}
-                /> */}
+                />
               </nav>
             )}
           </motion.div>

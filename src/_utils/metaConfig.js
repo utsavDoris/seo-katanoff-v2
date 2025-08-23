@@ -55,16 +55,5 @@ export const generateMetadata = (customMeta = {}) => {
       generator:
         "Elementor 3.18.3; features: e_dom_optimization, e_optimized_assets_loading, additional_custom_breakpoints, block_editor_assets_optimize, e_image_loading_optimization; settings: css_print_method-external, google_font-enabled, font_display-auto",
     },
-
-    icons: {
-      icon: [
-        { url: "/favicon/favicon-96x96.png", type: "image/png", sizes: "96x96" },
-        { url: "/favicon/favicon.svg", type: "image/svg+xml" },
-        { url: "/favicon/favicon.ico", rel: "shortcut icon" },
-      ],
-      apple: [{ url: "/favicon/apple-touch-icon.png", sizes: "180x180" }],
-    },
-
-    manifest: "/favicon/site.webmanifest",
   };
 };

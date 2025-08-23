@@ -1,13 +1,16 @@
 "use client";
-import { HeaderLinkButton } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IoIosLogOut, IoIosSearch } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import miniLogo from "@/assets/images/mini-logo.webp";
-import { CustomImg, ProfileDropdown } from "../../dynamiComponents";
-import CartPopup from "../../ui/CartPopup";
+import {
+  CartPopup,
+  CustomImg,
+  HeaderLinkButton,
+  ProfileDropdown,
+} from "../../dynamiComponents";
 import { mainHeaderLinks } from "../navigationHeader";
 import Cookies from "js-cookie";
 import { fetchCart } from "@/_actions/cart.action";
@@ -20,13 +23,7 @@ export default function NavigationHeader() {
   const router = useRouter();
   const { isMenuOpen } = useSelector(({ common }) => common);
   const [isHeaderVisible, setIsHeaderVisible] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
   const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const user = helperFunctions.getCurrentUser();
-    setCurrentUser(user);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +36,8 @@ export default function NavigationHeader() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  let currentUser = helperFunctions?.getCurrentUser();
 
   const logOutHandler = () => {
     localStorage.removeItem("currentUser");
