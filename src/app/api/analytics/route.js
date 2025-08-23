@@ -83,29 +83,29 @@
 //         return NextResponse.json({ error: "Failed to fetch analytics" }, { status: 500 });
 //     }
 // }
-import { BetaAnalyticsDataClient } from "@google-analytics/data";
+import { google } from "googleapis";
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-// --- 1) Create Analytics Client ---
-function getAnalyticsClient() {
+// Google Auth Helper
+function getAuth() {
     const raw = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON;
     if (!raw) throw new Error("Missing GOOGLE_APPLICATION_CREDENTIALS_JSON env");
 
     const credentials = JSON.parse(raw);
 
-    return new BetaAnalyticsDataClient({
+    return new google.auth.GoogleAuth({
         credentials,
+        scopes: ["https://www.googleapis.com/auth/analytics.readonly"],
     });
 }
 
-// --- 2) API Route ---
 export async function GET(req) {
     try {
-        // Check Admin Secret Key
+        // --- 1) Verify Admin Secret Key ---
         const adminKey = req.headers.get("x-admin-key");
         if (!adminKey || adminKey !== process.env.ADMIN_SECRET_KEY) {
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -114,50 +114,57 @@ export async function GET(req) {
         const propertyId = process.env.GA_PROPERTY_ID;
         if (!propertyId) throw new Error("Missing GA_PROPERTY_ID env");
 
-        const analyticsDataClient = getAnalyticsClient();
+        // --- 2) Authenticate ---
+        const auth = getAuth();
+        const analyticsdata = google.analyticsdata({ version: "v1beta", auth });
 
-        // --- 3) Fetch Summary Metrics (last 7 days) ---
-        const [summary] = await analyticsDataClient.runReport({
+        // --- 3) Fetch Summary Metrics ---
+        const summary = await analyticsdata.properties.runReport({
             property: `properties/${propertyId}`,
-            dateRanges: [{ startDate: "7daysAgo", endDate: "today" }],
-            metrics: [
-                { name: "activeUsers" },
-                { name: "sessions" },
-                { name: "screenPageViews" },
-            ],
+            requestBody: {
+                dateRanges: [{ startDate: "7daysAgo", endDate: "today" }],
+                metrics: [
+                    { name: "activeUsers" },
+                    { name: "sessions" },
+                    { name: "screenPageViews" },
+                ],
+            },
         });
 
         // --- 4) Fetch Top Pages ---
-        const [topPages] = await analyticsDataClient.runReport({
+        const topPages = await analyticsdata.properties.runReport({
             property: `properties/${propertyId}`,
-            dateRanges: [{ startDate: "7daysAgo", endDate: "today" }],
-            dimensions: [{ name: "pagePath" }],
-            metrics: [{ name: "screenPageViews" }],
-            orderBys: [{ metric: { metricName: "screenPageViews" }, desc: true }],
-            limit: 10,
+            requestBody: {
+                dateRanges: [{ startDate: "7daysAgo", endDate: "today" }],
+                dimensions: [{ name: "pagePath" }],
+                metrics: [{ name: "screenPageViews" }],
+                orderBys: [{ metric: { metricName: "screenPageViews" }, desc: true }],
+                limit: 10,
+            },
         });
 
         // --- 5) Fetch Top Traffic Sources ---
-        const [sources] = await analyticsDataClient.runReport({
+        const sources = await analyticsdata.properties.runReport({
             property: `properties/${propertyId}`,
-            dateRanges: [{ startDate: "7daysAgo", endDate: "today" }],
-            dimensions: [{ name: "sessionDefaultChannelGroup" }],
-            metrics: [{ name: "sessions" }],
-            orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
-            limit: 10,
+            requestBody: {
+                dateRanges: [{ startDate: "7daysAgo", endDate: "today" }],
+                dimensions: [{ name: "sessionDefaultChannelGroup" }],
+                metrics: [{ name: "sessions" }],
+                orderBys: [{ metric: { metricName: "sessions" }, desc: true }],
+                limit: 10,
+            },
         });
 
-        // --- 6) Return API Response ---
         return NextResponse.json({
-            summary: summary.rows,
-            topPages: topPages.rows,
-            sources: sources.rows,
+            summary: summary.data.rows || [],
+            topPages: topPages.data.rows || [],
+            sources: sources.data.rows || [],
         });
 
     } catch (err) {
         console.error("GA API error:", err);
         return NextResponse.json(
-            { error: "Failed to fetch analytics" },
+            { error: "Failed to fetch analytics", details: err.message },
             { status: 500 }
         );
     }
