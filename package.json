@@ -51,6 +51,7 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
+    "cross-env": "^10.0.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "file-loader": "^6.2.0",
