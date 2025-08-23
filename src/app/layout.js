@@ -1,4 +1,5 @@
 import StoreProvider from "@/store/provider";
+import Script from "next/script";
 import "./globals.css";
 import { Layout } from "@/components/dynamiComponents";
 // import { generateMetadata } from "@/_utils/metaConfig";
@@ -7,6 +8,7 @@ import { Layout } from "@/components/dynamiComponents";
 
 // export const metadata = generateMetadata();
 export default function RootLayout({ children }) {
+  const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
   return (
     <html lang="en">
       <head>
@@ -32,7 +34,24 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <StoreProvider>
-          <Layout>{children}</Layout>
+          <Layout>
+            {GA_ID ? (
+              <>
+                <Script
+                  strategy="afterInteractive"
+                  src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+                />
+                <Script id="ga4" strategy="afterInteractive">
+                  {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', { send_page_view: true });
+              `}
+                </Script>
+              </>
+            ) : null}
+            {children}</Layout>
         </StoreProvider>
       </body>
       {/* <GoogleAnalytics gaId={googleAnalyticsId} /> */}
