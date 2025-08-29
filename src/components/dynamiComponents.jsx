@@ -28,7 +28,6 @@ export const ProgressiveImg = dynamic(() => import("./ui/progressive-img"), {
 
 export const CustomImg = dynamic(() => import("./ui/custom-img"));
 
-export const Lenis = dynamic(() => import("./layout/lenis"), { ssr: false });
 export const StoreProvider = dynamic(() => import("@/store/provider"), {
   ssr: false,
 });
@@ -433,3 +432,7 @@ export const ProfileDropdown = dynamic(
     ssr: false,
   }
 );
+
+export const Spinner = dynamic(() => import("./ui/spinner.jsx"), {
+  ssr: false,
+});

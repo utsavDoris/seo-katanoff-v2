@@ -26,6 +26,7 @@ export const headerLinks = [
   { to: "/returnHistory", label: "Returns History" },
 ];
 
+export const COLLECTION = "collection";
 export const GOLD_TYPES = "Gold Type";
 export const GOLD_COLOR = "Gold Color";
 export const METAL_TYPES = "Metal Type";
@@ -36,7 +37,6 @@ export const LENGTH = "Length";
 export const WIDTH = "Width";
 export const DIAMOND_SHAPE = "Diamond Shape";
 export const DIAMOND_QUALITY = "Diamond Quality";
-export const SETTING_STYLE = "Setting Style";
 export const TOP_SELLING_PRODUCTS = "Top Selling Products";
 export const FLASH_DEALS = "Flash Deals";
 export const CUSTOM = "Custom";
@@ -74,6 +74,12 @@ export const messageType = {
 };
 
 export const CATEGORIES = "categories";
+export const SETTING_STYLE = "Setting Style";
+export const SETTING_STYLE_KEY = "setting_style";
+export const PRODUCT_TYPE_KEY = "product_types";
+export const PRODUCT_TYPES = "productTypes";
+export const SUB_CATEGORIES = "subCategories";
+export const SUB_CATEGORIES_KEY = "sub_categories";
 export const RING = "Ring";
 
 export const MAX_ALLOW_QTY_FOR_CUSTOM_PRODUCT = 5;
@@ -132,3 +138,79 @@ export const COLLECTION_TYPES = [TWO_GRID, THREE_GRID, SLIDER_GRID];
 export const CURRENT_YEAR = new Date().getFullYear();
 
 export const NEW_YORK_CODE = "NY";
+
+//Meta Constants
+
+export const META_CONSTANTS = {
+  HOME: "home",
+  WARRANTY: "warranty",
+  TRACK_YOUR_RETURN: "track-your-return",
+  TRACK_YOUR_ORDER: "track-your-order",
+  TERMS_AND_CONDITIONS: "terms-and-conditions",
+  SHIPPING_POLICY: "shipping-policy",
+  SHIPPING: "shipping",
+  SEARCH: "search",
+  RETURN_POLICY: "return-policy",
+  PRIVACY_POLICY: "privacy-policy",
+  PAYMENT_FINANCING: "payment-financing",
+  EDUCATION: "education",
+  SELECT_SETTING: "select-setting",
+  SELECT_DIAMOND: "select-diamond",
+  COMPLETE_RING: "complete-ring",
+  CUSTOM_JEWELRY_FORM: "custom-jewelry-form",
+  CUSTOM_JEWELRY: "custom-jewelry",
+  CONTACT_US: "contact-us",
+  CHECKOUT: "checkout",
+  CART: "cart",
+  BOOK_APPOINTMENT: "book-appointment",
+  ABOUT_US: "about-us",
+  SIGN_UP: "sign-up",
+  LOGIN: "login",
+  VERIFY_OTP: "verify-otp",
+  PROFILE: "profile",
+  ORDER_HISTORY: "orderHistory",
+  RETURN_HISTORY: "returnHistory",
+};
+
+export const GIFTS_FOR_HIM = "Gifts For Him";
+export const GIFTS_FOR_HER = "Gifts For Her";
+export const GIFTS_UNDER_1000 = "Gifts Under $1000";
+export const GENERAL = "general";
+export const DEFAULT = "default";
+
+
+export const FILTER_CONFIG = [
+  {
+    page: CATEGORIES,
+    filter: SETTING_STYLE_KEY,
+  },
+  {
+    page: SUB_CATEGORIES,
+    filter: PRODUCT_TYPE_KEY,
+  },
+  {
+    page: PRODUCT_TYPES,
+    filter: SETTING_STYLE_KEY,
+  },
+  {
+    page: GENERAL,
+    filterOptions: [
+      { title: GIFTS_FOR_HER, filter: SUB_CATEGORIES_KEY },
+      { title: GIFTS_FOR_HIM, filter: SUB_CATEGORIES_KEY },
+      { title: GIFTS_UNDER_1000, filter: SUB_CATEGORIES_KEY },
+    ],
+    defaultFilter: SETTING_STYLE_KEY,
+  },
+  {
+    page: DEFAULT,
+    filter: SETTING_STYLE_KEY,
+  },
+];
+
+
+export const FILTER_TO_OPTIONS_MAP = {
+  [SETTING_STYLE_KEY]: "uniqueSettingStyles",
+  [PRODUCT_TYPE_KEY]: "uniqueProductTypes",
+  [SUB_CATEGORIES_KEY]: "uniqueSubCategories",
+  [DEFAULT]: "uniqueSettingStyles"
+};

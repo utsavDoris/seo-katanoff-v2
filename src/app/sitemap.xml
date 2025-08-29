@@ -1,31 +1,237 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://dev-katanoff-v2.vercel.app/auth/verify-otp</loc><lastmod>2025-08-20T06:15:16.934Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/auth/login</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/auth/sign-up</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/profile</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/contact-us</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/book-appointment</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/return-history</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/order-history</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/custom-jewelry</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/custom-jewelry-form</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>1</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/payment-financing</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/search</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/shipping-policy</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/terms-and-conditions</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/track-your-order</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/track-your-return</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/privacy-policy</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/return-policy</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/cart</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/checkout</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/customize/select-diamond</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/customize/complete-ring</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/customize/select-setting</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/shipping</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/about-us</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/warranty</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
-<url><loc>https://dev-katanoff-v2.vercel.app/education</loc><lastmod>2025-08-20T06:15:16.935Z</lastmod><priority>0.8</priority></url>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://www.katanoff.com/</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/contact-us</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/book-appointment</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/Flash_Deals</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/Engagement_Rings</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/Wedding_Rings</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/custom-jewelry</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/about-us</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/return-policy</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/shipping-policy</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/warranty</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/track-your-order</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/track-your-return</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/payment-financing</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/terms-and-conditions</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/privacy-policy</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/site-map</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/categories/Jewelry</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/education</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/subCategories/rings?parentMainCategory=Jewelry</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/subCategories/earrings?parentMainCategory=Jewelry</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/subCategories/Necklaces?parentMainCategory=Jewelry</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/subCategories/Bracelets?parentMainCategory=Jewelry</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/subCategories/Men&amp;#x27;s_Jewelry?parentMainCategory=Jewelry</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/Special_Buys</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/New_Arrival</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/Tennis</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/Fashion</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/Trending_Collections</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/Quick_Ship_Gifts</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/Gifts_For_Her</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/Gifts_For_Him</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/Anniversary%20Gifts</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/collections/collection/Gifts_Under_$1000</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/customize/select-diamond</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/customize/select-diamond?shape=round</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/customize/select-diamond?shape=princess</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/customize/select-diamond?shape=cushion</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/customize/select-diamond?shape=asscher</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/customize/select-diamond?shape=heart</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/customize/select-diamond?shape=emerald</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/customize/select-diamond?shape=pear</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/customize/select-diamond?shape=oval</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/customize/select-diamond?shape=radiant</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.katanoff.com/customize/select-diamond?shape=marquise</loc>
+  <lastmod>2025-08-29T04:10:32+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
 </urlset>

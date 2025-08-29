@@ -124,11 +124,6 @@ const ReturnDetails = ({
     };
   }, [returnDetail]);
 
-  // const handleDownloadInvoice = ({ returnId, orderNumber }) => {
-  //   if (!returnId) return;
-  //   dispatch(downloadReturnInvoice({ returnId, orderNumber }));
-  // };
-
   // Render loading state
   if (returnLoader) {
     return (
@@ -151,45 +146,25 @@ const ReturnDetails = ({
 
   return (
     <div
-      className={`p-4 lg:p-8 2xl:p-10 ${
-        showShadow ? "shadow-[0px_0px_10px_0px_#0000001A]" : ""
-      } rounded-md`}
+      className={`p-4 lg:p-8 2xl:p-10 ${showShadow ? "shadow-[0px_0px_10px_0px_#0000001A]" : ""
+        } rounded-md`}
     >
       {/* Action Buttons */}
       <div className="flex justify-end gap-4">
         {showCancel
           ? returnDetail?.status === "pending" &&
-            returnDetail?.returnPaymentStatus === "pending" && (
-              <CancelReturnRequest returnId={returnDetail.id} />
-            )
+          returnDetail?.returnPaymentStatus === "pending" && (
+            <CancelReturnRequest returnId={returnDetail.id} />
+          )
           : null}
-        {/* {["approved", "received"]?.includes(returnDetail?.status) &&
+        {["approved", "received"]?.includes(returnDetail?.status) &&
           (invoiceLoading ? (
             <Spinner className="h-6" />
           ) : (
-            <button
-              className="text-left px-4 py-2 hover:bg-gray-100 flex gap-4 text-base text-basegray"
-              onClick={() =>
-                handleDownloadInvoice({
-                  returnId: returnDetail?.id,
-                  orderNumber: returnDetail?.orderNumber,
-                })
-              }
-            >
-              <BsDownload
-                title="Download Invoice"
-                className="text-xl text-basegray"
-              />
-            </button>
-          ))} */}
-        <div className="w-[24px]">
-          {["approved", "received"]?.includes(returnDetail?.status) &&
-            (invoiceLoading ? (
-              <Spinner className="h-[24px] w-7" />
-            ) : (
-              <DownloadInvoice returnId={returnDetail.id} />
-            ))}
-        </div>
+            <DownloadInvoice
+              returnId={returnDetail?.id}
+            ></DownloadInvoice>
+          ))}
       </div>
       {/* Main Content */}
       <div className="flex flex-col lg:flex-row pt-2 lg:pt-3 lg:divide-x divide-[#00000033]">
@@ -373,8 +348,8 @@ const ReturnDetails = ({
             </div>
             <hr className="w-full border-t border-gray-300 my-2 mx-auto" />
             {returnDetail?.returnRequestAmount &&
-            returnDetail?.refundAmount &&
-            Number(returnDetail?.returnRequestAmount) ===
+              returnDetail?.refundAmount &&
+              Number(returnDetail?.returnRequestAmount) ===
               Number(returnDetail?.refundAmount) ? (
               // Case: Full refund, show only Refunded Amount
               <div className="flex justify-between">
@@ -402,7 +377,7 @@ const ReturnDetails = ({
                         -
                         {formatCurrency(
                           Number(returnDetail?.returnRequestAmount) -
-                            Number(returnDetail?.refundAmount)
+                          Number(returnDetail?.refundAmount)
                         )}
                       </p>
                     </div>
