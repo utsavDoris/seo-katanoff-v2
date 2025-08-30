@@ -253,7 +253,6 @@ const Home = () => {
         <KeyFeatures />
       </section>
 
-
       {collectionsLoading ? (
         <TwoGridSkeleton />
       ) : twoGridData.length > 0 ? (
@@ -273,7 +272,10 @@ const Home = () => {
         </section>
       ) : null} */}
 
-      <ThreeGridHomePage gridItems={staticThreeGridData} className="px-4 pt-8 lg:pt-6" />
+      <ThreeGridHomePage
+        gridItems={staticThreeGridData}
+        className="px-4 pt-8 lg:pt-6"
+      />
 
       <section className="pt-12 lg:pt-16 2xl:pt-24">
         <JewelryAppointment />

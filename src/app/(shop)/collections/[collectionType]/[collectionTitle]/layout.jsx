@@ -27,7 +27,9 @@ export async function generateMetadata({ params }) {
     const completeUrl = fullUrl || `${protocol}://${host}`;
     const urlObj = new URL(completeUrl);
     const searchParams = urlObj.searchParams;
-    console.log(searchParams, "searchParams");
+
+    const parentCategory = searchParams.get("parentCategory") || "";
+    const parentMainCategory = searchParams.get("parentMainCategory") || "";
     collectionTitle = helperFunctions.stringReplacedWithSpace(collectionTitle);
 
     if (collectionType === COLLECTION) {
@@ -41,10 +43,13 @@ export async function generateMetadata({ params }) {
     }
 
     // if (collectionType === COLLECTION) {
-    // const collectionDetail = await productService.fetchCollectionBanners({
-    //   collectionCategory: collectionType,
-    //   collectionName: collectionTitle,
-    // });
+    const collectionDetail = await productService.fetchCollectionBanners({
+      collectionCategory: collectionType,
+      collectionName: collectionTitle,
+      parentSubCategory: parentCategory,
+      parentMainCategory,
+    });
+    console.log(collectionDetail, "collectionDetail");
     // }
     // productName = helperFunctions?.stringReplacedWithSpace(productName);
 
@@ -82,6 +87,7 @@ export async function generateMetadata({ params }) {
       description: metaDesc,
       keywords: metaKeyword,
       url: canonicalUrl,
+      openGraphImage: collectionDetail.mobile,
     };
 
     return generateMetaConfig({ customMeta });
