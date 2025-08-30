@@ -34,7 +34,7 @@ export async function generateMetadata({ params }) {
       // productDetail?.roseGoldImages?.[0]?.image ||
       // productDetail?.whiteGoldImages?.[0]?.image ||
       // productDetail?.yellowGoldImages?.[0]?.image ||
-      "/images/default-meta-image.png";
+      "/images/default-meta-image.webp";
 
     const customMeta = {
       title: `${productDetail.productName} | Katanoff Jewelry`,
