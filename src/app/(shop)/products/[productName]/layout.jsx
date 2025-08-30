@@ -1,4 +1,4 @@
-import { helperFunctions } from "@/_helper";
+import { helperFunctions, WebsiteUrl } from "@/_helper";
 import { productService } from "@/_services";
 import { generateMetadata as generateMetaConfig } from "@/_utils/metaConfig";
 
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }) {
       // productDetail?.roseGoldImages?.[0]?.image ||
       // productDetail?.whiteGoldImages?.[0]?.image ||
       // productDetail?.yellowGoldImages?.[0]?.image ||
-      null;
+      `${WebsiteUrl}/opengraph-image.png`;
 
     const customMeta = {
       title: `${productDetail.productName} | Katanoff Jewelry`,
