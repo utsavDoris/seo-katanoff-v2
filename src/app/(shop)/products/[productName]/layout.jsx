@@ -1,40 +1,74 @@
-// // products/[productName]/layout.jsx
-// import { generateMetadata as buildMeta } from "@/_utils/metaConfig";
-// import { WebsiteUrl } from "@/_helper";
+import { helperFunctions } from "@/_helper";
+import { productService } from "@/_services";
+import { generateMetadata as generateMetaConfig } from "@/_utils/metaConfig";
 
-// export async function generateMetadata({ params }) {
-//   const { productName } = params;
+export async function generateMetadata({ params }) {
+  try {
+    let { productName } = params;
+    productName = helperFunctions?.stringReplacedWithSpace(productName);
 
-//   // Example: Fetch product details (replace with real API/service)
-//   // This could be a DB call, API fetch, etc.
-//   const product = await getProductByName(productName);
+    if (!productName) {
+      return {
+        title: "Product Not Found | Katanoff Jewelry",
+        description: "This product does not exist or has been removed.",
+        robots: "noindex, nofollow",
+      };
+    }
+    // ✅ Fetch product details directly (no thunk)
+    const productDetail = await productService.getSingleProduct(productName);
 
-//   const META_TITLE = `${product.name} | Katanoff Fine Jewelry`;
-//   const META_DESCRIPTION =
-//     product.description ||
-//     `Discover ${product.name} at Katanoff. Exceptional craftsmanship, timeless elegance, and unique designs.`;
-//   const META_KEYWORDS = `Katanoff, ${product.name}, fine jewelry, gold jewelry, diamond jewelry, ${product.category}`;
-//   const CANONICAL_URL = `${WebsiteUrl}/products/${productName}`;
+    console.log("Fetched Product Detail:", productDetail);
 
-//   return buildMeta({
-//     title: META_TITLE,
-//     description: META_DESCRIPTION,
-//     keywords: META_KEYWORDS,
-//     url: CANONICAL_URL,
-//     openGraphImage: product.image || "/opengraph-image.png",
-//   });
-// }
+    if (!productDetail) {
+      return {
+        title: "Product Not Found | Katanoff Jewelry",
+        description: "Sorry, this product does not exist or has been removed.",
+        robots: "noindex, nofollow",
+      };
+    }
 
-export default function ProductLayout({ children }) {
-  return <div>{children}</div>;
+    // ✅ Select OG image
+    const ogImage =
+      productDetail?.roseGoldThumbnailImage ||
+      productDetail?.yellowGoldThumbnailImage ||
+      productDetail?.whiteGoldThumbnailImage ||
+      productDetail?.roseGoldImages?.[0]?.image ||
+      productDetail?.whiteGoldImages?.[0]?.image ||
+      productDetail?.yellowGoldImages?.[0]?.image ||
+      "/default-image.png";
+
+    // ✅ Build custom metadata
+    const customMeta = {
+      title: `${productDetail.productName} | Katanoff Jewelry`,
+      description:
+        productDetail?.description?.replace(/<[^>]*>/g, "")?.slice(0, 160) ||
+        "Explore the latest jewelry designs with Katanoff. High-quality, beautifully crafted pendants and more.",
+      keywords: [
+        productDetail.productName,
+        ...(productDetail?.collectionNames || []),
+        productDetail?.categoryName,
+        ...(productDetail?.subCategoryNames?.map((s) => s.title) || []),
+        ...(productDetail?.productTypeNames?.map((s) => s.title) || []),
+        "Jewelry",
+        "Pendants",
+        "Gold",
+      ]
+        .filter(Boolean)
+        .join(", "),
+      openGraphImage: ogImage,
+    };
+    console.log(customMeta);
+    return generateMetaConfig({ customMeta });
+  } catch (error) {
+    console.error("Metadata generation failed:", error);
+    return {
+      title: "Error | Katanoff Jewelry",
+      description: "Something went wrong. Please try again later.",
+    };
+  }
 }
 
-// Example mock fetcher (replace with real data)
-// async function getProductByName(productName) {
-//   return {
-//     name: productName.replace("-", " "),
-//     description: "This is a sample product description.",
-//     category: "rings",
-//     image: "/sample-product.png",
-//   };
-// }
+// ✅ Layout Component (Wraps Product Pages)
+export default function ProductLayout({ children }) {
+  return children;
+}

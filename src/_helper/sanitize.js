@@ -1,8 +1,14 @@
+import DOMPurify from "isomorphic-dompurify";
 import { fileSettings } from "@/_utils/fileSettings";
-import DOMPurify from "dompurify";
 
 export const sanitizeValue = (value) => {
-  return DOMPurify.sanitize(value);
+  if (typeof value !== "string") return value;
+  try {
+    return DOMPurify.sanitize(value);
+  } catch (error) {
+    console.error("Sanitization failed:", error);
+    return value;
+  }
 };
 
 export const sanitizeObject = (obj) => {
@@ -24,7 +30,6 @@ export const sanitizeObject = (obj) => {
               ) {
                 return sanitizeObject(item);
               } else {
-                // Return other types within the array as-is
                 return item;
               }
             }),
@@ -34,9 +39,8 @@ export const sanitizeObject = (obj) => {
           value !== null &&
           !isSupportedFile(value)
         ) {
-          return [key, sanitizeObject(value)]; // Recursive call for nested objects
+          return [key, sanitizeObject(value)];
         } else {
-          // Return other types (number,booleans etc.) as-is
           return [key, value];
         }
       })
@@ -47,7 +51,6 @@ export const sanitizeObject = (obj) => {
   }
 };
 
-// Helper function to check for supported file types
 const isSupportedFile = (value) => {
   return (
     value instanceof File &&
@@ -56,3 +59,5 @@ const isSupportedFile = (value) => {
     )
   );
 };
+
+
