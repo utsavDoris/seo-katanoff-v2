@@ -47,9 +47,6 @@ export async function generateMetadata({ params }) {
         productDetail?.categoryName,
         ...(productDetail?.subCategoryNames?.map((s) => s.title) || []),
         ...(productDetail?.productTypeNames?.map((s) => s.title) || []),
-        "Jewelry",
-        "Pendants",
-        "Gold",
       ]
         .filter(Boolean)
         .join(", "),
