@@ -2,20 +2,23 @@ import {
   CATEGORIES,
   COLLECTION,
   helperFunctions,
+  PRODUCT_TYPES,
   SUB_CATEGORIES,
   WebsiteUrl,
 } from "@/_helper";
 import { collectionService, productService } from "@/_services";
 import { generateMetadata as generateMetaConfig } from "@/_utils/metaConfig";
+import { createServerSearchParamsForServerPage } from "next/dist/server/request/search-params";
 import { headers } from "next/headers";
 
 export async function generateMetadata({ params }) {
   try {
     let { collectionType, collectionTitle } = params;
     let metaTitle = "";
-    let metaDesc = "";
     let metaKeyword = "";
+    let metaDesc = "";
 
+    // ✅ Parse query params from the request URL
     const headersList = headers();
     const fullUrl =
       headersList.get("x-url") ||
@@ -26,30 +29,52 @@ export async function generateMetadata({ params }) {
     const protocol = headersList.get("x-forwarded-proto") || "https";
     const completeUrl = fullUrl || `${protocol}://${host}`;
     const urlObj = new URL(completeUrl);
+
+    // ✅ Now we can read query params safely
     const searchParams = urlObj.searchParams;
 
     const parentCategory = searchParams.get("parentCategory") || "";
     const parentMainCategory = searchParams.get("parentMainCategory") || "";
     collectionTitle = helperFunctions.stringReplacedWithSpace(collectionTitle);
 
-    if (collectionType === COLLECTION) {
-      metaTitle = `${collectionTitle} | Lab Grown Diamond Jewelry Deals | Katanoff`;
-      metaDesc = `Discover ${collectionTitle} collection at Katanoff. Featuring lab grown diamond jewelry with timeless design, expert craftsmanship, and exceptional value.`;
-      metaKeyword = `${collectionTitle}, Lab Grown Diamond Jewelry, Fine Jewelry, Katanoff Jewelry`;
-    } else if (collectionType === SUB_CATEGORIES) {
+    if ([CATEGORIES, SUB_CATEGORIES].includes(collectionType)) {
       metaTitle = `Shop ${collectionTitle} | Lab Grown Diamond Jewelry | Katanoff`;
       metaDesc = `Explore ${collectionTitle} at Katanoff – luxury lab grown diamond jewelry crafted for everyday elegance, special occasions, and lasting beauty.`;
       metaKeyword = `Shop ${collectionTitle}, Buy ${collectionTitle}, Lab Grown Diamond ${collectionTitle}, Ethical Diamond Jewelry, Katanoff`;
+    } else if (collectionType === PRODUCT_TYPES) {
+      if (parentCategory?.toLowerCase() === "Men’s Jewelry"?.toLowerCase()) {
+        metaTitle = `Shop Men's ${collectionTitle} | Lab Grown Diamond Jewelry | Katanoff`;
+        metaDesc = `Explore our collection of men's ${collectionTitle} crafted with lab grown diamonds. Katanoff brings modern style, fine craftsmanship, and sustainable luxury.`;
+        metaKeyword = `men's ${collectionTitle}, men's diamond ${collectionTitle}, lab grown diamond men's ${collectionTitle}, sustainable men's jewelry`;
+      } else if (
+        collectionTitle?.toLowerCase()?.includes(parentCategory?.toLowerCase())
+      ) {
+        metaTitle = `Shop ${collectionTitle} | Lab Grown Diamond Jewelry | Katanoff`;
+        metaDesc = `Discover our stunning ${collectionTitle} collection, featuring lab grown diamonds set in timeless designs. Shop sustainable, high-quality jewelry at Katanoff.`;
+        metaKeyword = `${collectionTitle}, diamond ${collectionTitle}, lab grown diamond ${collectionTitle}, sustainable ${collectionTitle} jewelry`;
+      } else {
+        console.log(parentCategory, "parentCategory");
+        metaTitle = `Shop ${collectionTitle} ${parentCategory} | Lab Grown Diamond Jewelry | Katanoff`;
+        metaDesc = `Shop elegant ${collectionTitle} ${parentCategory} at Katanoff. Designed with lab grown diamonds, each piece blends brilliance, quality, and sustainability.`;
+        metaKeyword = ` ${collectionTitle}  ${parentCategory}, diamond  ${collectionTitle}  ${parentCategory}, lab grown  ${collectionTitle}  ${parentCategory}, sustainable ${collectionTitle} jewelry`;
+      }
+      // metaTitle = `${collectionTitle} | Lab Grown Diamond Jewelry Deals | Katanoff`;
+      // metaDesc = `Discover ${collectionTitle} collection at Katanoff. Featuring lab grown diamond jewelry with timeless design, expert craftsmanship, and exceptional value.`;
+      // metaKeyword = `${collectionTitle}, Lab Grown Diamond Jewelry, Fine Jewelry, Katanoff Jewelry`;
+    } else if ([COLLECTION, GENERAL].includes(collectionType)) {
+      metaTitle = `${collectionTitle} | Lab Grown Diamond Jewelry Deals | Katanoff`;
+      metaDesc = `Discover ${collectionTitle} collection at Katanoff. Featuring lab grown diamond jewelry with timeless design, expert craftsmanship, and exceptional value.`;
+      metaKeyword = `${collectionTitle}, Lab Grown Diamond Jewelry, Fine Jewelry, Katanoff Jewelry`;
     }
 
     // if (collectionType === COLLECTION) {
-    const collectionDetail = await productService.fetchCollectionBanners({
-      collectionCategory: collectionType,
-      collectionName: collectionTitle,
-      parentSubCategory: parentCategory,
-      parentMainCategory,
-    });
-    console.log(collectionDetail, "collectionDetail");
+    // const collectionDetail = await productService.fetchCollectionBanners({
+    //   collectionCategory: collectionType,
+    //   collectionName: collectionTitle,
+    //   parentSubCategory: parentCategory || "",
+    //   parentMainCategory,
+    // });
+    // console.log(collectionDetail, "collectionDetail");
     // }
     // productName = helperFunctions?.stringReplacedWithSpace(productName);
 
@@ -81,15 +106,14 @@ export async function generateMetadata({ params }) {
     //   `${WebsiteUrl}/opengraph-image.png`;
 
     const canonicalUrl = `${WebsiteUrl}/${collectionType}/${collectionTitle}`;
-
     const customMeta = {
       title: metaTitle,
-      description: metaDesc,
       keywords: metaKeyword,
+      description: metaDesc,
       url: canonicalUrl,
-      openGraphImage: collectionDetail.mobile,
+      // openGraphImage: collectionDetail.mobile,
     };
-
+    console.log(customMeta);
     return generateMetaConfig({ customMeta });
   } catch (error) {
     console.error("Metadata generation failed:", error);
