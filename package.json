@@ -20,6 +20,7 @@
     "axios": "^1.8.4",
     "bcryptjs": "^3.0.2",
     "country-state-city": "^3.2.1",
+    "critters": "^0.0.23",
     "dompurify": "^3.2.4",
     "firebase": "^11.5.0",
     "flatpickr": "^4.6.13",
