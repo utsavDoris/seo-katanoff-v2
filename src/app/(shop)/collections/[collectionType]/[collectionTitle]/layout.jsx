@@ -47,9 +47,6 @@ export async function generateMetadata({ params }) {
         metaDesc = `Shop elegant ${collectionTitle} ${parentCategory} at Katanoff. Designed with lab grown diamonds, each piece blends brilliance, quality, and sustainability.`;
         metaKeyword = ` ${collectionTitle}  ${parentCategory}, diamond  ${collectionTitle}  ${parentCategory}, lab grown  ${collectionTitle}  ${parentCategory}, sustainable ${collectionTitle} jewelry`;
       }
-      // metaTitle = `${collectionTitle} | Lab Grown Diamond Jewelry Deals | Katanoff`;
-      // metaDesc = `Discover ${collectionTitle} collection at Katanoff. Featuring lab grown diamond jewelry with timeless design, expert craftsmanship, and exceptional value.`;
-      // metaKeyword = `${collectionTitle}, Lab Grown Diamond Jewelry, Fine Jewelry, Katanoff Jewelry`;
     } else if ([COLLECTION, GENERAL].includes(collectionType)) {
       metaTitle = `${collectionTitle} | Lab Grown Diamond Jewelry Deals | Katanoff`;
       metaDesc = `Discover ${collectionTitle} collection at Katanoff. Featuring lab grown diamond jewelry with timeless design, expert craftsmanship, and exceptional value.`;
@@ -57,12 +54,12 @@ export async function generateMetadata({ params }) {
     }
 
     // if (collectionType === COLLECTION) {
-    // const collectionDetail = await productService.fetchCollectionBanners({
-    //   collectionCategory: collectionType,
-    //   collectionName: collectionTitle,
-    //   parentSubCategory: parentCategory || "",
-    //   parentMainCategory,
-    // });
+    const collectionDetail = await productService.fetchCollectionBanners({
+      collectionCategory: collectionType,
+      collectionName: collectionTitle,
+      parentSubCategory: parentCategory || "",
+      parentMainCategory,
+    });
     // console.log(collectionDetail, "collectionDetail");
     // }
     // productName = helperFunctions?.stringReplacedWithSpace(productName);
@@ -100,7 +97,7 @@ export async function generateMetadata({ params }) {
       keywords: metaKeyword,
       description: metaDesc,
       url: canonicalUrl,
-      // openGraphImage: collectionDetail.mobile,
+      openGraphImage: collectionDetail.mobile,
     };
 
     return generateMetaConfig({ customMeta });
