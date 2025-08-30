@@ -27,17 +27,15 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    // ✅ Select OG image
     const ogImage =
-      productDetail?.roseGoldThumbnailImage ||
-      productDetail?.yellowGoldThumbnailImage ||
-      productDetail?.whiteGoldThumbnailImage ||
-      productDetail?.roseGoldImages?.[0]?.image ||
-      productDetail?.whiteGoldImages?.[0]?.image ||
-      productDetail?.yellowGoldImages?.[0]?.image ||
-      "/default-image.png";
+      // productDetail?.yellowGoldThumbnailImage ||
+      // productDetail?.roseGoldThumbnailImage ||
+      // productDetail?.whiteGoldThumbnailImage ||
+      // productDetail?.roseGoldImages?.[0]?.image ||
+      // productDetail?.whiteGoldImages?.[0]?.image ||
+      // productDetail?.yellowGoldImages?.[0]?.image ||
+      "/images/default-meta-image.png";
 
-    // ✅ Build custom metadata
     const customMeta = {
       title: `${productDetail.productName} | Katanoff Jewelry`,
       description:
@@ -57,7 +55,6 @@ export async function generateMetadata({ params }) {
         .join(", "),
       openGraphImage: ogImage,
     };
-    console.log(customMeta);
     return generateMetaConfig({ customMeta });
   } catch (error) {
     console.error("Metadata generation failed:", error);
@@ -68,7 +65,6 @@ export async function generateMetadata({ params }) {
   }
 }
 
-// ✅ Layout Component (Wraps Product Pages)
 export default function ProductLayout({ children }) {
   return children;
 }
