@@ -1,13 +1,13 @@
-import { helperFunctions, WebsiteUrl } from "@/_helper";
+import { DIAMOND_SHAPE, helperFunctions, WebsiteUrl } from "@/_helper";
 import { productService } from "@/_services";
 import { generateMetadata as generateMetaConfig } from "@/_utils/metaConfig";
 
-export async function generateMetadata({ params, searchParams }) {
+export async function generateMetadata({ params }) {
   try {
     let { productName } = params;
+
     productName = helperFunctions?.stringReplacedWithSpace(productName);
 
-    // If product name is missing → Return 404-friendly metadata
     if (!productName) {
       return {
         title: "Product Not Found | Katanoff Jewelry",
@@ -16,7 +16,6 @@ export async function generateMetadata({ params, searchParams }) {
       };
     }
 
-    // ✅ Fetch product details directly
     const productDetail = await productService.getSingleProduct(productName);
 
     if (!productDetail) {
@@ -27,7 +26,6 @@ export async function generateMetadata({ params, searchParams }) {
       };
     }
 
-    // ✅ Build OpenGraph image
     const ogImage =
       productDetail?.yellowGoldThumbnailImage ||
       productDetail?.roseGoldThumbnailImage ||
@@ -37,23 +35,19 @@ export async function generateMetadata({ params, searchParams }) {
       productDetail?.yellowGoldImages?.[0]?.image ||
       `${WebsiteUrl}/opengraph-image.png`;
 
+    const diamondShapeVariation = productDetail.variations?.find(
+      (v) => v.variationName === DIAMOND_SHAPE
+    );
+    const diamondShape =
+      diamondShapeVariation?.variationTypes?.[0].variationTypeName || "";
+    const subCategory = productDetail.subCategoryNames[0].title;
     const canonicalUrl = `${WebsiteUrl}/products/${params.productName}`;
-
-    // ✅ Pass dynamic product data to meta generator
     const customMeta = {
-      title: `${productDetail.productName} | Katanoff Jewelry`,
+      title: `${productDetail.productName} with ${diamondShape} Diamonds | Katanoff Fine Jewelry`,
       description:
-        productDetail?.description?.replace(/<[^>]*>/g, "")?.slice(0, 160) ||
+        `Shop ${productDetail.productName} featuring brilliant ${diamondShape} diamonds at Katanoff. Elegant craftsmanship and timeless fine jewelry.` ||
         "Explore the latest jewelry designs with Katanoff. High-quality, beautifully crafted pendants and more.",
-      keywords: [
-        productDetail.productName,
-        ...(productDetail?.collectionNames || []),
-        productDetail?.categoryName,
-        ...(productDetail?.subCategoryNames?.map((s) => s.title) || []),
-        ...(productDetail?.productTypeNames?.map((s) => s.title) || []),
-      ]
-        .filter(Boolean)
-        .join(", "),
+      keywords: `${productDetail.productName},  ${diamondShape} Diamond ${subCategory}, Diamond Jewelry, Fine Jewelry, Katanoff`,
       openGraphImage: ogImage,
       url: canonicalUrl,
     };
