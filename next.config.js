@@ -1,13 +1,10 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    unoptimized: true,
-  },
-  turbopack: {
-    enabled: true,
-  },
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
+module.exports = withBundleAnalyzer({
+  images: { unoptimized: true },
   reactStrictMode: false,
-};
-
-module.exports = nextConfig;
+  experimental: { optimizeCss: true },
+  turbopack: { enabled: true },
+});
