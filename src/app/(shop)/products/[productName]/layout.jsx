@@ -37,11 +37,7 @@ export async function generateMetadata({ params, searchParams }) {
       productDetail?.yellowGoldImages?.[0]?.image ||
       `${WebsiteUrl}/opengraph-image.png`;
 
-    // ✅ Construct full canonical URL (including query params)
-    const searchParamsString = searchParams
-      ? `?${new URLSearchParams(searchParams).toString()}`
-      : "";
-    const canonicalUrl = `${WebsiteUrl}/products/${params.productName}${searchParamsString}`;
+    const canonicalUrl = `${WebsiteUrl}/products/${params.productName}`;
 
     // ✅ Pass dynamic product data to meta generator
     const customMeta = {
