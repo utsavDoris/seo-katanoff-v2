@@ -12,23 +12,26 @@ export function middleware(request) {
     "/profile",
   ];
 
-
   const isProtected = protectedRoutes.some((route) =>
     pathname.startsWith(route)
   );
 
+  // ✅ Preserve your existing auth redirection
   if (isAuthenticated && pathname.startsWith("/auth")) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  if (
-    !isAuthenticated &&
-    isProtected
-  ) {
+  if (!isAuthenticated && isProtected) {
     return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 
-  return NextResponse.next();
+  // ✅ Create response object
+  const response = NextResponse.next();
+
+  // ✅ Inject the full URL into headers so generateMetadata can read it
+  response.headers.set("x-url", request.url);
+
+  return response;
 }
 
 export const config = {
@@ -43,5 +46,9 @@ export const config = {
     "/return-request", // Return Request
     "/return-request/:path*", // Return Request detail
     "/profile", // Profile
+
+    // ✅ Include dynamic collection/product routes too
+    "/collections/:path*",
+    "/products/:path*",
   ],
 };

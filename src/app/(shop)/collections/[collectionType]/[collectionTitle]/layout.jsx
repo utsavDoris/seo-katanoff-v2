@@ -18,19 +18,9 @@ export async function generateMetadata({ params }) {
     let metaKeyword = "";
     let metaDesc = "";
 
-    // ✅ Parse query params from the request URL
     const headersList = headers();
-    const fullUrl =
-      headersList.get("x-url") ||
-      headersList.get("referer") ||
-      headersList.get("x-forwarded-host") ||
-      "";
-    const host = headersList.get("host");
-    const protocol = headersList.get("x-forwarded-proto") || "https";
-    const completeUrl = fullUrl || `${protocol}://${host}`;
+    const completeUrl = headersList.get("x-url") || "";
     const urlObj = new URL(completeUrl);
-
-    // ✅ Now we can read query params safely
     const searchParams = urlObj.searchParams;
 
     const parentCategory = searchParams.get("parentCategory") || "";
@@ -42,7 +32,7 @@ export async function generateMetadata({ params }) {
       metaDesc = `Explore ${collectionTitle} at Katanoff – luxury lab grown diamond jewelry crafted for everyday elegance, special occasions, and lasting beauty.`;
       metaKeyword = `Shop ${collectionTitle}, Buy ${collectionTitle}, Lab Grown Diamond ${collectionTitle}, Ethical Diamond Jewelry, Katanoff`;
     } else if (collectionType === PRODUCT_TYPES) {
-      if (parentCategory?.toLowerCase() === "Men’s Jewelry"?.toLowerCase()) {
+      if (parentCategory === "Men’s Jewelry") {
         metaTitle = `Shop Men's ${collectionTitle} | Lab Grown Diamond Jewelry | Katanoff`;
         metaDesc = `Explore our collection of men's ${collectionTitle} crafted with lab grown diamonds. Katanoff brings modern style, fine craftsmanship, and sustainable luxury.`;
         metaKeyword = `men's ${collectionTitle}, men's diamond ${collectionTitle}, lab grown diamond men's ${collectionTitle}, sustainable men's jewelry`;
@@ -53,7 +43,6 @@ export async function generateMetadata({ params }) {
         metaDesc = `Discover our stunning ${collectionTitle} collection, featuring lab grown diamonds set in timeless designs. Shop sustainable, high-quality jewelry at Katanoff.`;
         metaKeyword = `${collectionTitle}, diamond ${collectionTitle}, lab grown diamond ${collectionTitle}, sustainable ${collectionTitle} jewelry`;
       } else {
-        console.log(parentCategory, "parentCategory");
         metaTitle = `Shop ${collectionTitle} ${parentCategory} | Lab Grown Diamond Jewelry | Katanoff`;
         metaDesc = `Shop elegant ${collectionTitle} ${parentCategory} at Katanoff. Designed with lab grown diamonds, each piece blends brilliance, quality, and sustainability.`;
         metaKeyword = ` ${collectionTitle}  ${parentCategory}, diamond  ${collectionTitle}  ${parentCategory}, lab grown  ${collectionTitle}  ${parentCategory}, sustainable ${collectionTitle} jewelry`;
@@ -113,7 +102,7 @@ export async function generateMetadata({ params }) {
       url: canonicalUrl,
       // openGraphImage: collectionDetail.mobile,
     };
-    console.log(customMeta);
+
     return generateMetaConfig({ customMeta });
   } catch (error) {
     console.error("Metadata generation failed:", error);
