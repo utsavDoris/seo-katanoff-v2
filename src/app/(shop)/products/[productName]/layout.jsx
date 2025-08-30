@@ -27,13 +27,14 @@ export async function generateMetadata({ params }) {
       };
     }
 
-    const ogImage = "";
-    // productDetail?.yellowGoldThumbnailImage ||
-    // productDetail?.roseGoldThumbnailImage ||
-    // productDetail?.whiteGoldThumbnailImage ||
-    // productDetail?.roseGoldImages?.[0]?.image ||
-    // productDetail?.whiteGoldImages?.[0]?.image ||
-    // productDetail?.yellowGoldImages?.[0]?.image
+    const ogImage =
+      // productDetail?.yellowGoldThumbnailImage ||
+      // productDetail?.roseGoldThumbnailImage ||
+      // productDetail?.whiteGoldThumbnailImage ||
+      // productDetail?.roseGoldImages?.[0]?.image ||
+      // productDetail?.whiteGoldImages?.[0]?.image ||
+      // productDetail?.yellowGoldImages?.[0]?.image ||
+      null;
 
     const customMeta = {
       title: `${productDetail.productName} | Katanoff Jewelry`,
