@@ -1,6 +1,7 @@
 import {
   CATEGORIES,
   COLLECTION,
+  GENERAL,
   helperFunctions,
   PRODUCT_TYPES,
   SUB_CATEGORIES,
@@ -60,6 +61,7 @@ export async function generateMetadata({ params }) {
       parentSubCategory: parentCategory || "",
       parentMainCategory,
     });
+    
     // console.log(collectionDetail, "collectionDetail");
     // }
     // productName = helperFunctions?.stringReplacedWithSpace(productName);
