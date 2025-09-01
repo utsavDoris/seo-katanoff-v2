@@ -6,10 +6,17 @@ import {
   PRODUCT_TYPES,
   SUB_CATEGORIES,
   WebsiteUrl,
+  GIFTS_FOR_HER,
+  GIFTS_FOR_HIM,
+  GIFTS_UNDER_1000,
 } from "@/_helper";
 import { productService } from "@/_services";
 import { generateMetadata as generateMetaConfig } from "@/_utils/metaConfig";
 import { headers } from "next/headers";
+
+import giftsForHimMobile from "@/assets/images/collections/giftsForHimMobile.webp";
+import giftsForHerMobile from "@/assets/images/collections/giftsForHerMobile.webp";
+import giftsUnder1000Mobile from "@/assets/images/collections/giftsUnder1000Mobile.webp";
 
 export async function generateMetadata({ params }) {
   try {
@@ -25,8 +32,19 @@ export async function generateMetadata({ params }) {
 
     const parentCategory = searchParams.get("parentCategory") || "";
     const parentMainCategory = searchParams.get("parentMainCategory") || "";
-    collectionTitle = helperFunctions.stringReplacedWithSpace(collectionTitle);
 
+    collectionTitle = helperFunctions.stringReplacedWithSpace(
+      decodeURIComponent(collectionTitle)
+    );
+
+    /** ----------- STATIC BANNER CONFIG ----------- **/
+    const STATIC_PROPS = {
+      [GIFTS_FOR_HER]: giftsForHerMobile,
+      [GIFTS_FOR_HIM]: giftsForHimMobile,
+      [GIFTS_UNDER_1000]: giftsUnder1000Mobile,
+    };
+
+    /** ----------- META TITLE / DESC / KEYWORDS ----------- **/
     if ([CATEGORIES, SUB_CATEGORIES].includes(collectionType)) {
       metaTitle = `Shop ${collectionTitle} | Lab Grown Diamond Jewelry | Katanoff`;
       metaDesc = `Explore ${collectionTitle} at Katanoff – luxury lab grown diamond jewelry crafted for everyday elegance, special occasions, and lasting beauty.`;
@@ -45,7 +63,7 @@ export async function generateMetadata({ params }) {
       } else {
         metaTitle = `Shop ${collectionTitle} ${parentCategory} | Lab Grown Diamond Jewelry | Katanoff`;
         metaDesc = `Shop elegant ${collectionTitle} ${parentCategory} at Katanoff. Designed with lab grown diamonds, each piece blends brilliance, quality, and sustainability.`;
-        metaKeyword = ` ${collectionTitle}  ${parentCategory}, diamond  ${collectionTitle}  ${parentCategory}, lab grown  ${collectionTitle}  ${parentCategory}, sustainable ${collectionTitle} jewelry`;
+        metaKeyword = `${collectionTitle} ${parentCategory}, diamond ${collectionTitle} ${parentCategory}, lab grown ${collectionTitle} ${parentCategory}, sustainable ${collectionTitle} jewelry`;
       }
     } else if ([COLLECTION, GENERAL].includes(collectionType)) {
       metaTitle = `${collectionTitle} | Lab Grown Diamond Jewelry Deals | Katanoff`;
@@ -53,24 +71,33 @@ export async function generateMetadata({ params }) {
       metaKeyword = `${collectionTitle}, Lab Grown Diamond Jewelry, Fine Jewelry, Katanoff Jewelry`;
     }
 
-    // if (collectionType === COLLECTION) {
-    const collectionDetail = await productService.fetchCollectionBanners({
-      collectionCategory: collectionType,
-      collectionName: collectionTitle,
-      parentSubCategory: parentCategory || "",
-      parentMainCategory,
-    });
+    /** ----------- BANNER HANDLING ----------- **/
+    let openGraphImage = "";
 
+    if (collectionType === GENERAL && STATIC_PROPS[collectionTitle]) {
+      openGraphImage = STATIC_PROPS[collectionTitle].src;
+    } else {
+      const collectionDetail = await productService.fetchCollectionBanners({
+        collectionCategory: collectionType,
+        collectionName: collectionTitle,
+        parentSubCategory: parentCategory || "",
+        parentMainCategory,
+      });
+      openGraphImage = collectionDetail?.mobile || "";
+    }
+
+    /** ----------- CANONICAL URL ----------- **/
     const canonicalUrl = searchParams.toString()
       ? `${WebsiteUrl}/${collectionType}/${collectionTitle}?${searchParams.toString()}`
       : `${WebsiteUrl}/${collectionType}/${collectionTitle}`;
 
+    /** ----------- FINAL META CONFIG ----------- **/
     const customMeta = {
       title: metaTitle,
       keywords: metaKeyword,
       description: metaDesc,
       url: canonicalUrl,
-      openGraphImage: collectionDetail.mobile,
+      openGraphImage,
     };
 
     return generateMetaConfig({ customMeta });
