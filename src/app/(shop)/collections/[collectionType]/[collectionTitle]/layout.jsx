@@ -14,9 +14,9 @@ import { productService } from "@/_services";
 import { generateMetadata as generateMetaConfig } from "@/_utils/metaConfig";
 import { headers } from "next/headers";
 
-import giftsForHimMobile from "@/assets/images/collections/giftsForHimMobile.webp";
-import giftsForHerMobile from "@/assets/images/collections/giftsForHerMobile.webp";
-import giftsUnder1000Mobile from "@/assets/images/collections/giftsUnder1000Mobile.webp";
+const giftsForHimMobile = "/images/giftsForHimMobile.webp";
+const giftsForHerMobile = "/images/giftsForHerMobile.webp";
+const giftsUnder1000Mobile = "/images/giftsUnder1000Mobile.webp";
 
 export async function generateMetadata({ params }) {
   try {
