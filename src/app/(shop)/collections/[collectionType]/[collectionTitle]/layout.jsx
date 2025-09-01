@@ -75,7 +75,7 @@ export async function generateMetadata({ params }) {
     let openGraphImage = "";
 
     if (collectionType === GENERAL && STATIC_PROPS[collectionTitle]) {
-      openGraphImage = STATIC_PROPS[collectionTitle].src;
+      openGraphImage = STATIC_PROPS[collectionTitle];
     } else {
       const collectionDetail = await productService.fetchCollectionBanners({
         collectionCategory: collectionType,
