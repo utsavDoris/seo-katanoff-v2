@@ -7,9 +7,8 @@ import {
   SUB_CATEGORIES,
   WebsiteUrl,
 } from "@/_helper";
-import { collectionService, productService } from "@/_services";
+import { productService } from "@/_services";
 import { generateMetadata as generateMetaConfig } from "@/_utils/metaConfig";
-import { createServerSearchParamsForServerPage } from "next/dist/server/request/search-params";
 import { headers } from "next/headers";
 
 export async function generateMetadata({ params }) {
@@ -65,7 +64,7 @@ export async function generateMetadata({ params }) {
     const canonicalUrl = searchParams.toString()
       ? `${WebsiteUrl}/${collectionType}/${collectionTitle}?${searchParams.toString()}`
       : `${WebsiteUrl}/${collectionType}/${collectionTitle}`;
-      
+
     const customMeta = {
       title: metaTitle,
       keywords: metaKeyword,
