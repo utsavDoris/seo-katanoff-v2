@@ -1,10 +1,16 @@
 import { DIAMOND_SHAPE, helperFunctions, WebsiteUrl } from "@/_helper";
 import { productService } from "@/_services";
 import { generateMetadata as generateMetaConfig } from "@/_utils/metaConfig";
+import { headers } from "next/headers";
 
 export async function generateMetadata({ params }) {
   try {
     let { productName } = params;
+
+    const headersList = headers();
+    const completeUrl = headersList.get("x-url") || "";
+    const urlObj = new URL(completeUrl);
+    const searchParams = urlObj.searchParams;
 
     productName = helperFunctions?.stringReplacedWithSpace(productName);
 
@@ -41,7 +47,12 @@ export async function generateMetadata({ params }) {
     const diamondShape =
       diamondShapeVariation?.variationTypes?.[0].variationTypeName || "";
     const subCategory = productDetail.subCategoryNames[0].title;
-    const canonicalUrl = `${WebsiteUrl}/products/${params.productName}`;
+    const canonicalUrl = searchParams.toString()
+      ? `${WebsiteUrl}/products/${
+          params.productName
+        }?${searchParams.toString()}`
+      : `${WebsiteUrl}/products/${params.productName}`;
+
     const customMeta = {
       title: `${productDetail.productName} with ${diamondShape} Diamonds | Katanoff Fine Jewelry`,
       description:

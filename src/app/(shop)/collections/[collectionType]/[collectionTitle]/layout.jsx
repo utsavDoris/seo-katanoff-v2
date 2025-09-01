@@ -61,39 +61,11 @@ export async function generateMetadata({ params }) {
       parentSubCategory: parentCategory || "",
       parentMainCategory,
     });
-    
-    // console.log(collectionDetail, "collectionDetail");
-    // }
-    // productName = helperFunctions?.stringReplacedWithSpace(productName);
 
-    // if (!productName) {
-    //   return {
-    //     title: "Product Not Found | Katanoff Jewelry",
-    //     description: "This product does not exist or has been removed.",
-    //     robots: "noindex, nofollow",
-    //   };
-    // }
-
-    // const productDetail = await productService.getSingleProduct(productName);
-
-    // if (!productDetail) {
-    //   return {
-    //     title: "Product Not Found | Katanoff Jewelry",
-    //     description: "Sorry, this product does not exist or has been removed.",
-    //     robots: "noindex, nofollow",
-    //   };
-    // }
-
-    // const ogImage =
-    //   productDetail?.yellowGoldThumbnailImage ||
-    //   productDetail?.roseGoldThumbnailImage ||
-    //   productDetail?.whiteGoldThumbnailImage ||
-    //   productDetail?.roseGoldImages?.[0]?.image ||
-    //   productDetail?.whiteGoldImages?.[0]?.image ||
-    //   productDetail?.yellowGoldImages?.[0]?.image ||
-    //   `${WebsiteUrl}/opengraph-image.png`;
-
-    const canonicalUrl = `${WebsiteUrl}/${collectionType}/${collectionTitle}`;
+    const canonicalUrl = searchParams.toString()
+      ? `${WebsiteUrl}/${collectionType}/${collectionTitle}?${searchParams.toString()}`
+      : `${WebsiteUrl}/${collectionType}/${collectionTitle}`;
+      
     const customMeta = {
       title: metaTitle,
       keywords: metaKeyword,
